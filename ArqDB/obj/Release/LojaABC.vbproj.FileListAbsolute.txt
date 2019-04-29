@@ -1,0 +1,17 @@
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\bin\Release\LojaABC.exe.config
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\bin\Release\LojaABC.exe
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\bin\Release\LojaABC.pdb
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\bin\Release\LojaABC.xml
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\bin\Release\Bunifu_UI_v1.5.3.dll
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.embLogin.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.Form1.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.Resources.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.PagIni.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.printform.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.regCliente.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.regProdutos.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.reg_vendas.resources
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.vbproj.GenerateResource.Cache
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.exe
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.xml
+F:\Deus_está_morto\EnigmaVariations\Projeto_PSI_28\LojaABC\LojaABC\obj\Release\LojaABC.pdb

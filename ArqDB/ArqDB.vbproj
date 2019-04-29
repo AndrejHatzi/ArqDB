@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D3DA042-EE68-4CD2-BEA8-89E4BAEBD35D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ArqDB.My.MyApplication</StartupObject>
+    <RootNamespace>ArqDB</RootNamespace>
+    <AssemblyName>ArqDB</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ArqDB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ArqDB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.2.5\Assemblies\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.2.5\Assemblies\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.2.5\Assemblies\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="complete_list.Designer.vb">
+      <DependentUpon>complete_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="complete_list.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="embLogin.Designer.vb">
+      <DependentUpon>embLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="embLogin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="options.Designer.vb">
+      <DependentUpon>options.vb</DependentUpon>
+    </Compile>
+    <Compile Include="options.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PagIni.Designer.vb">
+      <DependentUpon>PagIni.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PagIni.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="printform.Designer.vb">
+      <DependentUpon>printform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="printform.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rascunho.Designer.vb">
+      <DependentUpon>rascunho.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rascunho.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="regCliente.Designer.vb">
+      <DependentUpon>regCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="regCliente.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="regProdutos.Designer.vb">
+      <DependentUpon>regProdutos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="regProdutos.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="reg_vendas.Designer.vb">
+      <DependentUpon>reg_vendas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reg_vendas.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="stdio.vb" />
+    <Compile Include="utils.Designer.vb">
+      <DependentUpon>utils.vb</DependentUpon>
+    </Compile>
+    <Compile Include="utils.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="complete_list.resx">
+      <DependentUpon>complete_list.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="embLogin.resx">
+      <DependentUpon>embLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="options.resx">
+      <DependentUpon>options.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagIni.resx">
+      <DependentUpon>PagIni.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="printform.resx">
+      <DependentUpon>printform.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rascunho.resx">
+      <DependentUpon>rascunho.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="regCliente.resx">
+      <DependentUpon>regCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="regProdutos.resx">
+      <DependentUpon>regProdutos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reg_vendas.resx">
+      <DependentUpon>reg_vendas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utils.resx">
+      <DependentUpon>utils.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
