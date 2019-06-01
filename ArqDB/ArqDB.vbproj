@@ -92,6 +92,12 @@
     <Compile Include="complete_list.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="db_form.Designer.vb">
+      <DependentUpon>db_form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="db_form.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="embLogin.Designer.vb">
       <DependentUpon>embLogin.vb</DependentUpon>
     </Compile>
@@ -104,6 +110,13 @@
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="io.vb" />
+    <Compile Include="mapstudio.Designer.vb">
+      <DependentUpon>mapstudio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="mapstudio.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -174,11 +187,17 @@
     <EmbeddedResource Include="complete_list.resx">
       <DependentUpon>complete_list.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="db_form.resx">
+      <DependentUpon>db_form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="embLogin.resx">
       <DependentUpon>embLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mapstudio.resx">
+      <DependentUpon>mapstudio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -222,6 +241,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
