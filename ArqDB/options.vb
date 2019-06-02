@@ -72,25 +72,46 @@
         Form1.Db_form1.PeriodoCombo.AddItem("Neolítico")
         Form1.Db_form1.PeriodoCombo.AddItem("Paleolítico")
         'db_form colour
-        Form1.Db_form1.CorIconComboBox.Clear()
-        Form1.Db_form1.CorIconComboBox.AddItem("Verde Claro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Vermelho Escuro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Branco")
-        Form1.Db_form1.CorIconComboBox.AddItem("Roxo")
-        Form1.Db_form1.CorIconComboBox.AddItem("Laranjas")
-        Form1.Db_form1.CorIconComboBox.AddItem("Azul")
-        Form1.Db_form1.CorIconComboBox.AddItem("Cinzento Claro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Azul Claro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Cinzento")
-        Form1.Db_form1.CorIconComboBox.AddItem("Vermelho")
-        Form1.Db_form1.CorIconComboBox.AddItem("Verde")
-        Form1.Db_form1.CorIconComboBox.AddItem("Roxo Escuro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Verde Escuro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Azul Turquesa")
-        Form1.Db_form1.CorIconComboBox.AddItem("Azul Escuro")
-        Form1.Db_form1.CorIconComboBox.AddItem("Rosa")
-        Form1.Db_form1.CorIconComboBox.AddItem("Bege")
-        Form1.Db_form1.CorIconComboBox.AddItem("Vermelho Claro")
+        'Form1.Db_form1.CorIconComboBox.Clear()
+        'Form1.Db_form1.CorIconComboBox.AddItem("Verde Claro")0
+        'Form1.Db_form1.CorIconComboBox.AddItem("Vermelho Escuro")1
+        'Form1.Db_form1.CorIconComboBox.AddItem("Branco")2
+        'Form1.Db_form1.CorIconComboBox.AddItem("Roxo")3
+        'Form1.Db_form1.CorIconComboBox.AddItem("Laranjas")4
+        'Form1.Db_form1.CorIconComboBox.AddItem("Azul")5
+        'Form1.Db_form1.CorIconComboBox.AddItem("Cinzento Claro")6
+        'Form1.Db_form1.CorIconComboBox.AddItem("Azul Claro")7
+        'Form1.Db_form1.CorIconComboBox.AddItem("Cinzento")8
+        'Form1.Db_form1.CorIconComboBox.AddItem("Vermelho")9
+        'Form1.Db_form1.CorIconComboBox.AddItem("Verde")10
+        'Form1.Db_form1.CorIconComboBox.AddItem("Roxo Escuro")11
+        'Form1.Db_form1.CorIconComboBox.AddItem("Verde Escuro")12
+        'Form1.Db_form1.CorIconComboBox.AddItem("Azul Turquesa")13
+        'Form1.Db_form1.CorIconComboBox.AddItem("Azul Escuro")14
+        'Form1.Db_form1.CorIconComboBox.AddItem("Rosa")15
+        'Form1.Db_form1.CorIconComboBox.AddItem("Bege")16
+        'Form1.Db_form1.CorIconComboBox.AddItem("Vermelho Claro")17
+
+
+        'Form1.Db_form1.CorIconComboBox.Clear()
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
+        'Form1.Db_form1.CorIconComboBox.AddItem("")
 
     End Sub
 
@@ -165,25 +186,25 @@
         Form1.Db_form1.PeriodoCombo.AddItem("Neolithic")
         Form1.Db_form1.PeriodoCombo.AddItem("Paleolithic")
         'db_form icon colour
-        Form1.Db_form1.CorIconComboBox.Clear()
-        Form1.Db_form1.CorIconComboBox.AddItem("LightGreen")
-        Form1.Db_form1.CorIconComboBox.AddItem("DarkRed")
-        Form1.Db_form1.CorIconComboBox.AddItem("White")
-        Form1.Db_form1.CorIconComboBox.AddItem("Purple")
-        Form1.Db_form1.CorIconComboBox.AddItem("Orange")
-        Form1.Db_form1.CorIconComboBox.AddItem("Blue")
-        Form1.Db_form1.CorIconComboBox.AddItem("LightGrayBlack")
-        Form1.Db_form1.CorIconComboBox.AddItem("LightBlue")
-        Form1.Db_form1.CorIconComboBox.AddItem("Gray")
-        Form1.Db_form1.CorIconComboBox.AddItem("Red")
-        Form1.Db_form1.CorIconComboBox.AddItem("Green")
-        Form1.Db_form1.CorIconComboBox.AddItem("DarkPurple")
-        Form1.Db_form1.CorIconComboBox.AddItem("Darkgreen")
-        Form1.Db_form1.CorIconComboBox.AddItem("CadetBlue")
-        Form1.Db_form1.CorIconComboBox.AddItem("DarkBlue")
-        Form1.Db_form1.CorIconComboBox.AddItem("Pink")
-        Form1.Db_form1.CorIconComboBox.AddItem("Beige")
-        Form1.Db_form1.CorIconComboBox.AddItem("LighRed")
+        'Form1.Db_form1.CorIconComboBox.Clear()
+        'Form1.Db_form1.CorIconComboBox.AddItem("LightGreen")
+        'Form1.Db_form1.CorIconComboBox.AddItem("DarkRed")
+        'Form1.Db_form1.CorIconComboBox.AddItem("White")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Purple")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Orange")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Blue")
+        'Form1.Db_form1.CorIconComboBox.AddItem("LightGrayBlack")
+        'Form1.Db_form1.CorIconComboBox.AddItem("LightBlue")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Gray")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Red")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Green")
+        'Form1.Db_form1.CorIconComboBox.AddItem("DarkPurple")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Darkgreen")
+        'Form1.Db_form1.CorIconComboBox.AddItem("CadetBlue")
+        'Form1.Db_form1.CorIconComboBox.AddItem("DarkBlue")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Pink")
+        'Form1.Db_form1.CorIconComboBox.AddItem("Beige")
+        'Form1.Db_form1.CorIconComboBox.AddItem("LightRed")
     End Sub
 
     Private Sub options_Load(sender As Object, e As EventArgs) Handles MyBase.Load

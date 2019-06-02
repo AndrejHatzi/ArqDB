@@ -424,4 +424,59 @@ Module stdio
     '            conexao.Dispose()
     '        End Try
     '    End If
+    Public Function InsertItemsDatabase(pBox As Object, Code As Object, DateDate As String, TownHall As Object, Parish As Object, Place As Object, Epoch As Object, RawMaterial As Object, Description As Object, Base As Object, Technology As Object, Length As Object, Width As Object, Thickness As Object, Latitude As Object, Longitude As Object, Bibliography As Object, Message As String) As Boolean
+        Dim con As New MySqlConnection()
+        Dim comando As New MySqlCommand
+        Dim ms As New MemoryStream
+        pBox.Image.Save(ms, pBox.Image.RawFormat)
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            comando.CommandText = "INSERT INTO items(Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude, Bibliography, Image) VALUES(" & Code.text & ",'" & DateDate & "','" & TownHall.text & "','" & Parish.text & "','" & Place.text & "','" & Epoch.selectedValue.ToString() & "','" & RawMaterial.selectedValue.ToString() & "','" & Description.selectedValue.ToString() & "','" & Base.text & "','" & Technology.text & "'," & Length.text & "," & Width.text & "," & Thickness.text & "," & Latitude.text & "," & Longitude.text & ",'" & Bibliography.text & "',@img)"
+            comando.Parameters.Add("@img", MySqlDbType.Blob).Value = ms.ToArray()
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(Message & ex.Message, "Error")
+            Return 0
+        Finally
+            con.Close()
+        End Try
+        'MessageBox.Show(Message)
+        Return 1
+    End Function
+    Public Function InsertMarkersDatabase(Code As Object, Latitude As Object, Longitude As Object, colour As String, label As Object, Message As String) As Boolean
+        Dim con As New MySqlConnection()
+        Dim comando As New MySqlCommand
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            comando.CommandText = "INSERT INTO markers(Cod, Latitude, Longitude, Colour, Label) VALUES(" & Code.text & "," & Latitude.text & "," & Longitude.text & ",'" & colour & "','" & label.text & "')"
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(Message & ex.Message, "Error")
+            Return 0
+        Finally
+            con.Close()
+        End Try
+        Return 1
+    End Function
+
+
+
+
+    'Dim command As New MySqlCommand("INSERT INTO teste(code, freguesia, foto) VALUES (" & code.text & ",'" & freguesia.text & "',@img)", connection)
+    'command.Parameters.Add("@img", MySqlDbType.Blob).Value = ms.ToArray()
+    'connection.Open()
+
+    'If command.ExecuteNonQuery() = 1 Then
+    '    MessageBox.Show("Image Inserted")
+    'Else
+    '    MessageBox.Show("Image Not Inserted")
+    'End If
+
+    'connection.Close()
+
+
 End Module

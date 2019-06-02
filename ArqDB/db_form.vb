@@ -3,6 +3,10 @@ Imports MySql.Data.MySqlClient
 Public Class db_form
 
     Private Sub db_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ColourSelector.Visible = 0
+
+
+
         'tBoxCodigo.ForeColor = Color.Coral
         'tBoxCodigo.HintForeColor = Color.Red
         'Dim items As IList(Of String) = New List(Of String)()
@@ -312,98 +316,119 @@ Public Class db_form
     End Sub
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Dim sqrColour, Message As String
+        Message = "Escolha uma cor para o Icone"
+        'DescricaoCombo.selectedValue.ToString()
         'Dim objStreamWriter As StreamWriter
-        Dim path As String = My.Application.Info.DirectoryPath
-        Dim relpath As String
+        'Dim path As String = My.Application.Info.DirectoryPath
+        'Dim relpath As String
         'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\gem.cfg")
+        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\gem.cfg")
         'Debug.Print(path)
-        MessageBox.Show(path)
-        MessageBox.Show(relpath)
+        'MessageBox.Show(path)
+        'MessageBox.Show(relpath)
         'MessageBox.Show(path.Replace)
         'objStreamWriter = New StreamWriter(relpath)
-
         'objStreamWriter.WriteLine(tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text)
-
         'objStreamWriter.WriteLine("From the StreamWriter class")
-
         'objStreamWriter.Close()
-
         'InsertItem(pBox, tBoxCodigo, DateDate, tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, MateriaPrimaCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, tBoxBibliografia, "Sucesso")
-        My.Computer.FileSystem.WriteAllText(relpath, tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text, True)
+        'My.Computer.FileSystem.WriteAllText(relpath, tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text, True)
         'InsertItems(pBox.Image, tBoxCodigo, tBoxFreguesia)
-        InsertItemsV2(pBox, tBoxCodigo, tBoxFreguesia)
+        'InsertItemsV2(pBox, tBoxCodigo, tBoxFreguesia)
+        InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, tBoxBibliografia, "Erro ao Inserir Dados")
+        If ColourSelector.Location.X = ColourBlue.Location.X Then
+            sqrColour = "cadetblue"
+        ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
+            sqrColour = "orange"
+        ElseIf ColourSelector.Location.X = ColourRed.Location.X Then
+            sqrColour = "red"
+        ElseIf ColourSelector.Location.X = ColourPurple.Location.X Then
+            sqrColour = "purple"
+        ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
+            sqrColour = "pink"
+        End If
+        If sqrColour = "" Then
+            MessageBox.Show(Message)
+        Else
+            InsertMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, Message)
+        End If
+
+
+
+
     End Sub
 
 
     'tBoxCodigo, tBoxConcelho, tBoxFreguesia, tBoxLugar, tBoxSuporte, 
     'tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, BibliografiaTextBox
 
-    Private Sub CorIconComboBox_onItemSelected(sender As Object, e As EventArgs) Handles CorIconComboBox.onItemSelected
-        If CorIconComboBox.selectedValue.ToString = "Verde Claro" Or CorIconComboBox.selectedValue.ToString = "LightGreen" Then
-            CorIconComboBox.NomalColor = Color.LightGreen
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkRed" Then
-            CorIconComboBox.NomalColor = Color.DarkRed
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Branco" Or CorIconComboBox.selectedValue.ToString = "White" Then
-            CorIconComboBox.NomalColor = Color.White
-            CorIconComboBox.ForeColor = Color.Black
-        ElseIf CorIconComboBox.selectedValue.ToString = "Roxo" Or CorIconComboBox.selectedValue.ToString = "Purple" Then
-            CorIconComboBox.NomalColor = Color.Purple
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Laranja" Or CorIconComboBox.selectedValue.ToString = "Orange" Then
-            CorIconComboBox.NomalColor = Color.Orange
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Azul" Or CorIconComboBox.selectedValue.ToString = "Blue" Then
-            CorIconComboBox.NomalColor = Color.Blue
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento Claro" Or CorIconComboBox.selectedValue.ToString = "LightGray" Then
-            CorIconComboBox.NomalColor = Color.LightGray
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Azul Claro" Or CorIconComboBox.selectedValue.ToString = "LightBlue" Then
-            CorIconComboBox.NomalColor = Color.LightBlue
-            CorIconComboBox.ForeColor = Color.Black
-        ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento" Or CorIconComboBox.selectedValue.ToString = "Gray" Then
-            CorIconComboBox.NomalColor = Color.Gray
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho" Or CorIconComboBox.selectedValue.ToString = "Red" Then
-            CorIconComboBox.NomalColor = Color.Red
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Verde" Or CorIconComboBox.selectedValue.ToString = "Green" Then
-            CorIconComboBox.NomalColor = Color.Green
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Roxo Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkPurple" Then
-            CorIconComboBox.NomalColor = Color.MediumPurple
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Verde Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkGreen" Then
-            CorIconComboBox.NomalColor = Color.DarkGreen
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Azul Cadete" Or CorIconComboBox.selectedValue.ToString = "CadetBlue" Then
-            CorIconComboBox.NomalColor = Color.CadetBlue
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Rosa" Or CorIconComboBox.selectedValue.ToString = "Pink" Then
-            CorIconComboBox.NomalColor = Color.Pink
-            CorIconComboBox.ForeColor = Color.White
-        ElseIf CorIconComboBox.selectedValue.ToString = "Bege" Or CorIconComboBox.selectedValue.ToString = "Beige" Then
-            CorIconComboBox.NomalColor = Color.Beige
-            CorIconComboBox.ForeColor = Color.Black
-        ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Claro" Or CorIconComboBox.selectedValue.ToString = "LightRed" Then
-            CorIconComboBox.NomalColor = Color.IndianRed
-            CorIconComboBox.ForeColor = Color.White
-        Else
-        End If
+    Private Sub CorIconComboBox_onItemSelected(sender As Object, e As EventArgs)
+        'If CorIconComboBox.selectedValue.ToString = "Verde Claro" Or CorIconComboBox.selectedValue.ToString = "LightGreen" Then
+        '    CorIconComboBox.NomalColor = Color.LightGreen
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkRed" Then
+        '    CorIconComboBox.NomalColor = Color.DarkRed
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Branco" Or CorIconComboBox.selectedValue.ToString = "White" Then
+        '    CorIconComboBox.NomalColor = Color.White
+        '    CorIconComboBox.ForeColor = Color.Black
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Roxo" Or CorIconComboBox.selectedValue.ToString = "Purple" Then
+        '    CorIconComboBox.NomalColor = Color.Purple
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Laranja" Or CorIconComboBox.selectedValue.ToString = "Orange" Then
+        '    CorIconComboBox.NomalColor = Color.Orange
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul" Or CorIconComboBox.selectedValue.ToString = "Blue" Then
+        '    CorIconComboBox.NomalColor = Color.Blue
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento Claro" Or CorIconComboBox.selectedValue.ToString = "LightGray" Then
+        '    CorIconComboBox.NomalColor = Color.LightGray
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul Claro" Or CorIconComboBox.selectedValue.ToString = "LightBlue" Then
+        '    CorIconComboBox.NomalColor = Color.LightBlue
+        '    CorIconComboBox.ForeColor = Color.Black
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento" Or CorIconComboBox.selectedValue.ToString = "Gray" Then
+        '    CorIconComboBox.NomalColor = Color.Gray
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho" Or CorIconComboBox.selectedValue.ToString = "Red" Then
+        '    CorIconComboBox.NomalColor = Color.Red
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Verde" Or CorIconComboBox.selectedValue.ToString = "Green" Then
+        '    CorIconComboBox.NomalColor = Color.Green
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Roxo Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkPurple" Then
+        '    CorIconComboBox.NomalColor = Color.MediumPurple
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Verde Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkGreen" Then
+        '    CorIconComboBox.NomalColor = Color.DarkGreen
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul Cadete" Or CorIconComboBox.selectedValue.ToString = "CadetBlue" Then
+        '    CorIconComboBox.NomalColor = Color.CadetBlue
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Rosa" Or CorIconComboBox.selectedValue.ToString = "Pink" Then
+        '    CorIconComboBox.NomalColor = Color.Pink
+        '    CorIconComboBox.ForeColor = Color.White
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Bege" Or CorIconComboBox.selectedValue.ToString = "Beige" Then
+        '    CorIconComboBox.NomalColor = Color.Beige
+        '    CorIconComboBox.ForeColor = Color.Black
+        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Claro" Or CorIconComboBox.selectedValue.ToString = "LightRed" Then
+        '    CorIconComboBox.NomalColor = Color.IndianRed
+        '    CorIconComboBox.ForeColor = Color.White
+        'Else
+        'End If
     End Sub
 
     Private Sub BtnLocalizar_Click(sender As Object, e As EventArgs) Handles BtnLocalizar.Click
-        Dim file As System.IO.StreamWriter
-        Dim path As String = My.Application.Info.DirectoryPath
-        Dim relpath As String
-        'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\current_loc.lc")
-        file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
-        file.WriteLine(tBoxLatitude.Text & "," & tBoxLongitude.Text & "," & CorIconComboBox.selectedValue.ToString & "," & tBoxLegenda.Text)
-        file.Close()
+        'Dim file As System.IO.StreamWriter
+        'Dim path As String = My.Application.Info.DirectoryPath
+        'Dim relpath As String
+        ''F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
+        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\current_loc.lc")
+        'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
+        'file.WriteLine(tBoxLatitude.Text & "," & tBoxLongitude.Text & "," & CorIconComboBox.selectedValue.ToString & "," & tBoxLegenda.Text)
+        'file.Close()
+        'CreateMapHTML()
     End Sub
 
     Private Sub pBox_Click(sender As Object, e As EventArgs) Handles pBox.Click
@@ -417,5 +442,60 @@ Public Class db_form
             MessageBox.Show(opf.FileName)
 
         End If
+    End Sub
+
+    Private Sub ColourPink_Click(sender As Object, e As EventArgs) Handles ColourPink.Click
+        ColourSelector.Visible = 1
+        ColourSelector.Width = ColourPink.Width
+        ColourSelector.Top = ColourPink.Top
+        ColourSelector.Location = New Point(ColourPink.Location.X, ColourPink.Location.Y)
+    End Sub
+
+    Private Sub ColourPurple_Click(sender As Object, e As EventArgs) Handles ColourPurple.Click
+        ColourSelector.Visible = 1
+        ColourSelector.Width = ColourPurple.Width
+        ColourSelector.Top = ColourPurple.Top
+        ColourSelector.Location = New Point(ColourPurple.Location.X, ColourPurple.Location.Y)
+    End Sub
+
+    Private Sub ColourRed_Click(sender As Object, e As EventArgs) Handles ColourRed.Click
+        ColourSelector.Visible = 1
+        ColourSelector.Width = ColourRed.Width
+        ColourSelector.Top = ColourRed.Top
+        ColourSelector.Location = New Point(ColourRed.Location.X, ColourRed.Location.Y)
+    End Sub
+
+    Private Sub ColourOrange_Click(sender As Object, e As EventArgs) Handles ColourOrange.Click
+        ColourSelector.Visible = 1
+        ColourSelector.Width = ColourOrange.Width
+        ColourSelector.Top = ColourOrange.Top
+        ColourSelector.Location = New Point(ColourOrange.Location.X, ColourOrange.Location.Y)
+    End Sub
+
+    Private Sub ColourBlue_Click(sender As Object, e As EventArgs) Handles ColourBlue.Click
+        ColourSelector.Visible = 1
+        ColourSelector.Width = ColourBlue.Width
+        ColourSelector.Top = ColourBlue.Top
+        ColourSelector.Location = New Point(ColourBlue.Location.X, ColourBlue.Location.Y)
+    End Sub
+
+    Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
+        MessageBox.Show(DateDate.Value.ToString("yyyy-MM-dd"))
+    End Sub
+
+    Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
+        Dim con As New MySqlConnection()
+        Dim comando As New MySqlCommand
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            comando.CommandText = "INSERT INTO teste(code, freguesia,Date) VALUES(" & tBoxCodigo.Text & ",'" & tBoxFreguesia.Text & "','" & DateDate.Value.ToString("yyyy-MM-dd") & "')"
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Erro de teste" & ex.Message, "Error")
+        Finally
+            con.Close()
+        End Try
     End Sub
 End Class

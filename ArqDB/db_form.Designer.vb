@@ -58,12 +58,17 @@ Partial Class db_form
         Me.tBoxEspessura = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.tBoxLatitude = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.tBoxLongitude = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.CorIconComboBox = New Bunifu.Framework.UI.BunifuDropdown()
         Me.LblCorIcon = New System.Windows.Forms.Label()
         Me.pBox = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tBoxLegenda = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.tBoxBibliografia = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.ColourPurple = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.ColourOrange = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.ColourBlue = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.ColourPink = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.ColourRed = New Bunifu.Framework.UI.BunifuTileButton()
+        Me.ColourSelector = New System.Windows.Forms.Panel()
         CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -547,7 +552,7 @@ Partial Class db_form
         Me.tBoxLatitude.Location = New System.Drawing.Point(201, 384)
         Me.tBoxLatitude.Margin = New System.Windows.Forms.Padding(4)
         Me.tBoxLatitude.Name = "tBoxLatitude"
-        Me.tBoxLatitude.Size = New System.Drawing.Size(59, 31)
+        Me.tBoxLatitude.Size = New System.Drawing.Size(84, 31)
         Me.tBoxLatitude.TabIndex = 77
         Me.tBoxLatitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
@@ -563,27 +568,12 @@ Partial Class db_form
         Me.tBoxLongitude.LineIdleColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.tBoxLongitude.LineMouseHoverColor = System.Drawing.SystemColors.Control
         Me.tBoxLongitude.LineThickness = 3
-        Me.tBoxLongitude.Location = New System.Drawing.Point(268, 384)
+        Me.tBoxLongitude.Location = New System.Drawing.Point(293, 384)
         Me.tBoxLongitude.Margin = New System.Windows.Forms.Padding(4)
         Me.tBoxLongitude.Name = "tBoxLongitude"
-        Me.tBoxLongitude.Size = New System.Drawing.Size(59, 31)
+        Me.tBoxLongitude.Size = New System.Drawing.Size(86, 31)
         Me.tBoxLongitude.TabIndex = 78
         Me.tBoxLongitude.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
-        'CorIconComboBox
-        '
-        Me.CorIconComboBox.BackColor = System.Drawing.Color.Transparent
-        Me.CorIconComboBox.BorderRadius = 3
-        Me.CorIconComboBox.DisabledColor = System.Drawing.Color.Gray
-        Me.CorIconComboBox.ForeColor = System.Drawing.Color.White
-        Me.CorIconComboBox.Items = New String() {"Lasca", "Seixo Talhado", "Núcleo", "Movente", "Resto de Talhe", "Esquírola", "Indeterminado"}
-        Me.CorIconComboBox.Location = New System.Drawing.Point(201, 451)
-        Me.CorIconComboBox.Name = "CorIconComboBox"
-        Me.CorIconComboBox.NomalColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.CorIconComboBox.onHoverColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(219, Byte), Integer))
-        Me.CorIconComboBox.selectedIndex = -1
-        Me.CorIconComboBox.Size = New System.Drawing.Size(185, 22)
-        Me.CorIconComboBox.TabIndex = 79
         '
         'LblCorIcon
         '
@@ -657,17 +647,125 @@ Partial Class db_form
         Me.tBoxBibliografia.TabIndex = 84
         Me.tBoxBibliografia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
+        'ColourPurple
+        '
+        Me.ColourPurple.BackColor = System.Drawing.Color.Purple
+        Me.ColourPurple.color = System.Drawing.Color.Purple
+        Me.ColourPurple.colorActive = System.Drawing.Color.Purple
+        Me.ColourPurple.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ColourPurple.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.ColourPurple.ForeColor = System.Drawing.Color.White
+        Me.ColourPurple.Image = CType(resources.GetObject("ColourPurple.Image"), System.Drawing.Image)
+        Me.ColourPurple.ImagePosition = 20
+        Me.ColourPurple.ImageZoom = 0
+        Me.ColourPurple.LabelPosition = 41
+        Me.ColourPurple.LabelText = ""
+        Me.ColourPurple.Location = New System.Drawing.Point(236, 449)
+        Me.ColourPurple.Margin = New System.Windows.Forms.Padding(6)
+        Me.ColourPurple.Name = "ColourPurple"
+        Me.ColourPurple.Size = New System.Drawing.Size(24, 24)
+        Me.ColourPurple.TabIndex = 85
+        '
+        'ColourOrange
+        '
+        Me.ColourOrange.BackColor = System.Drawing.Color.Orange
+        Me.ColourOrange.color = System.Drawing.Color.Orange
+        Me.ColourOrange.colorActive = System.Drawing.Color.Orange
+        Me.ColourOrange.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ColourOrange.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.ColourOrange.ForeColor = System.Drawing.Color.White
+        Me.ColourOrange.Image = CType(resources.GetObject("ColourOrange.Image"), System.Drawing.Image)
+        Me.ColourOrange.ImagePosition = 20
+        Me.ColourOrange.ImageZoom = 0
+        Me.ColourOrange.LabelPosition = 41
+        Me.ColourOrange.LabelText = ""
+        Me.ColourOrange.Location = New System.Drawing.Point(303, 449)
+        Me.ColourOrange.Margin = New System.Windows.Forms.Padding(6)
+        Me.ColourOrange.Name = "ColourOrange"
+        Me.ColourOrange.Size = New System.Drawing.Size(24, 24)
+        Me.ColourOrange.TabIndex = 86
+        '
+        'ColourBlue
+        '
+        Me.ColourBlue.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.ColourBlue.color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.ColourBlue.colorActive = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.ColourBlue.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ColourBlue.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.ColourBlue.ForeColor = System.Drawing.Color.White
+        Me.ColourBlue.Image = CType(resources.GetObject("ColourBlue.Image"), System.Drawing.Image)
+        Me.ColourBlue.ImagePosition = 20
+        Me.ColourBlue.ImageZoom = 0
+        Me.ColourBlue.LabelPosition = 41
+        Me.ColourBlue.LabelText = ""
+        Me.ColourBlue.Location = New System.Drawing.Point(339, 449)
+        Me.ColourBlue.Margin = New System.Windows.Forms.Padding(6)
+        Me.ColourBlue.Name = "ColourBlue"
+        Me.ColourBlue.Size = New System.Drawing.Size(24, 24)
+        Me.ColourBlue.TabIndex = 87
+        '
+        'ColourPink
+        '
+        Me.ColourPink.BackColor = System.Drawing.Color.Pink
+        Me.ColourPink.color = System.Drawing.Color.Pink
+        Me.ColourPink.colorActive = System.Drawing.Color.Pink
+        Me.ColourPink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ColourPink.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.ColourPink.ForeColor = System.Drawing.Color.White
+        Me.ColourPink.Image = CType(resources.GetObject("ColourPink.Image"), System.Drawing.Image)
+        Me.ColourPink.ImagePosition = 20
+        Me.ColourPink.ImageZoom = 0
+        Me.ColourPink.LabelPosition = 41
+        Me.ColourPink.LabelText = ""
+        Me.ColourPink.Location = New System.Drawing.Point(204, 449)
+        Me.ColourPink.Margin = New System.Windows.Forms.Padding(6)
+        Me.ColourPink.Name = "ColourPink"
+        Me.ColourPink.Size = New System.Drawing.Size(24, 24)
+        Me.ColourPink.TabIndex = 88
+        '
+        'ColourRed
+        '
+        Me.ColourRed.BackColor = System.Drawing.Color.Red
+        Me.ColourRed.color = System.Drawing.Color.Red
+        Me.ColourRed.colorActive = System.Drawing.Color.Red
+        Me.ColourRed.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ColourRed.Font = New System.Drawing.Font("Century Gothic", 15.75!)
+        Me.ColourRed.ForeColor = System.Drawing.Color.White
+        Me.ColourRed.Image = CType(resources.GetObject("ColourRed.Image"), System.Drawing.Image)
+        Me.ColourRed.ImagePosition = 20
+        Me.ColourRed.ImageZoom = 0
+        Me.ColourRed.LabelPosition = 41
+        Me.ColourRed.LabelText = ""
+        Me.ColourRed.Location = New System.Drawing.Point(268, 449)
+        Me.ColourRed.Margin = New System.Windows.Forms.Padding(6)
+        Me.ColourRed.Name = "ColourRed"
+        Me.ColourRed.Size = New System.Drawing.Size(24, 24)
+        Me.ColourRed.TabIndex = 89
+        '
+        'ColourSelector
+        '
+        Me.ColourSelector.BackColor = System.Drawing.Color.White
+        Me.ColourSelector.Location = New System.Drawing.Point(339, 430)
+        Me.ColourSelector.Name = "ColourSelector"
+        Me.ColourSelector.Size = New System.Drawing.Size(24, 10)
+        Me.ColourSelector.TabIndex = 90
+        '
         'db_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Controls.Add(Me.ColourSelector)
+        Me.Controls.Add(Me.ColourRed)
+        Me.Controls.Add(Me.ColourPink)
+        Me.Controls.Add(Me.ColourBlue)
+        Me.Controls.Add(Me.ColourOrange)
+        Me.Controls.Add(Me.ColourPurple)
         Me.Controls.Add(Me.tBoxBibliografia)
         Me.Controls.Add(Me.tBoxLegenda)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.pBox)
         Me.Controls.Add(Me.LblCorIcon)
-        Me.Controls.Add(Me.CorIconComboBox)
         Me.Controls.Add(Me.tBoxLongitude)
         Me.Controls.Add(Me.tBoxLatitude)
         Me.Controls.Add(Me.tBoxEspessura)
@@ -750,11 +848,16 @@ Partial Class db_form
     Friend WithEvents tBoxEspessura As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents tBoxLatitude As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents tBoxLongitude As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents CorIconComboBox As Bunifu.Framework.UI.BunifuDropdown
     Friend WithEvents LblCorIcon As System.Windows.Forms.Label
     Friend WithEvents pBox As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents tBoxLegenda As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents tBoxBibliografia As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents ColourPurple As Bunifu.Framework.UI.BunifuTileButton
+    Friend WithEvents ColourOrange As Bunifu.Framework.UI.BunifuTileButton
+    Friend WithEvents ColourBlue As Bunifu.Framework.UI.BunifuTileButton
+    Friend WithEvents ColourPink As Bunifu.Framework.UI.BunifuTileButton
+    Friend WithEvents ColourRed As Bunifu.Framework.UI.BunifuTileButton
+    Friend WithEvents ColourSelector As System.Windows.Forms.Panel
 
 End Class
