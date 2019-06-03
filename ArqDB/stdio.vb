@@ -470,6 +470,15 @@ Module stdio
         End Try
         Return 1
     End Function
+    Public Sub wait(ByVal interval As Integer)
+        Dim sw As New Stopwatch
+        sw.Start()
+        Do While sw.ElapsedMilliseconds < interval
+            ' Allows UI to remain responsive
+            Application.DoEvents()
+        Loop
+        sw.Stop()
+    End Sub
 
 
 
