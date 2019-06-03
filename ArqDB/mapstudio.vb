@@ -1,5 +1,5 @@
 ﻿Public Class mapstudio
-
+    Dim photopath As String
     Private Sub pBox_Click(sender As Object, e As EventArgs) Handles pBox.Click
         Dim opf As New OpenFileDialog
 
@@ -12,7 +12,20 @@
 
             pBox.Image = Image.FromFile(opf.FileName)
             MessageBox.Show(opf.FileName)
+            photopath = opf.FileName
             My.Computer.FileSystem.WriteAllText(relpath, opf.FileName, True)
         End If
+    End Sub
+
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        Dim file As System.IO.StreamWriter
+        Dim path As String = My.Application.Info.DirectoryPath
+        Dim relpath As String
+        'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
+        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\image.nm")
+        'file = My.Computer.FileSystem.WriteAllText(relpath, , True)
+        file.WriteLine(tBoxNome.Text)
+        file.WriteLine(photopath)
+        file.Close()
     End Sub
 End Class

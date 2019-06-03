@@ -184,7 +184,11 @@
 
         Options1.Location = New Point(0, 38)
         Options1.Width = 900
-        Options1.Height = 512
+        Options1.Height = 600
+
+        Mapstudio1.Location = New Point(0, 38)
+        Mapstudio1.Width = 900
+        Mapstudio1.Height = 600
 
         Db_form1.Location = New Point(0, 38)
         Db_form1.Width = 900
@@ -223,6 +227,11 @@
             Db_form1.Location = New Point(0, 100)
             Db_form1.Width = 900
             Db_form1.Height = 600
+
+
+            Mapstudio1.Location = New Point(0, 100)
+            Mapstudio1.Width = 900
+            Mapstudio1.Height = 600
 
             If activateSmall = False Then
 
@@ -308,6 +317,12 @@
                 Db_form1.Width = 900
                 Db_form1.Height = 512
 
+                Mapstudio1.Location = New Point(0, 38)
+                Mapstudio1.Width = 900
+                Mapstudio1.Height = 512
+
+
+
             Else
                 W = 10
                 'Options1.Left = ""
@@ -319,6 +334,10 @@
                 Db_form1.Location = New Point(200, 38)
                 Db_form1.Width = 700
                 Db_form1.Height = 512
+
+                Mapstudio1.Location = New Point(200, 38)
+                Mapstudio1.Width = 700
+                Mapstudio1.Height = 512
 
                 SelectorPanel.Visible = 1
 
@@ -431,5 +450,11 @@
         Options1.BringToFront()
         Db_form1.Visible = False
         Db_form1.SendToBack()
+    End Sub
+
+    Private Sub BtnMapStudio_Click(sender As Object, e As EventArgs) Handles BtnMapStudio.Click
+        SelectorPanel.Height = BtnMapStudio.Height - 1
+        SelectorPanel.Top = BtnMapStudio.Top
+        SelectorPanel.BringToFront()
     End Sub
 End Class

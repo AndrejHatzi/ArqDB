@@ -29,6 +29,8 @@ Partial Class mapstudio
         Me.BtnDelete = New Bunifu.Framework.UI.BunifuImageButton()
         Me.BtnUpdate = New Bunifu.Framework.UI.BunifuImageButton()
         Me.BtnSave = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.tBoxNome = New Bunifu.Framework.UI.BunifuMaterialTextbox()
+        Me.LabelNome = New System.Windows.Forms.Label()
         CType(Me.pBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ButtonSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnLocalizar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,11 +114,43 @@ Partial Class mapstudio
         Me.BtnSave.TabStop = False
         Me.BtnSave.Zoom = 20
         '
+        'tBoxNome
+        '
+        Me.tBoxNome.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.tBoxNome.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tBoxNome.ForeColor = System.Drawing.SystemColors.Control
+        Me.tBoxNome.HintForeColor = System.Drawing.SystemColors.Control
+        Me.tBoxNome.HintText = ""
+        Me.tBoxNome.isPassword = False
+        Me.tBoxNome.LineFocusedColor = System.Drawing.SystemColors.Control
+        Me.tBoxNome.LineIdleColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.tBoxNome.LineMouseHoverColor = System.Drawing.SystemColors.Control
+        Me.tBoxNome.LineThickness = 3
+        Me.tBoxNome.Location = New System.Drawing.Point(527, 280)
+        Me.tBoxNome.Margin = New System.Windows.Forms.Padding(4)
+        Me.tBoxNome.Name = "tBoxNome"
+        Me.tBoxNome.Size = New System.Drawing.Size(315, 31)
+        Me.tBoxNome.TabIndex = 88
+        Me.tBoxNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        '
+        'LabelNome
+        '
+        Me.LabelNome.AutoSize = True
+        Me.LabelNome.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelNome.ForeColor = System.Drawing.SystemColors.Control
+        Me.LabelNome.Location = New System.Drawing.Point(449, 287)
+        Me.LabelNome.Name = "LabelNome"
+        Me.LabelNome.Size = New System.Drawing.Size(62, 24)
+        Me.LabelNome.TabIndex = 89
+        Me.LabelNome.Text = "Nome"
+        '
         'mapstudio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Controls.Add(Me.LabelNome)
+        Me.Controls.Add(Me.tBoxNome)
         Me.Controls.Add(Me.ButtonSettings)
         Me.Controls.Add(Me.BtnLocalizar)
         Me.Controls.Add(Me.BtnDelete)
@@ -132,6 +166,7 @@ Partial Class mapstudio
         CType(Me.BtnUpdate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents pBox As System.Windows.Forms.PictureBox
@@ -140,5 +175,7 @@ Partial Class mapstudio
     Friend WithEvents BtnDelete As Bunifu.Framework.UI.BunifuImageButton
     Friend WithEvents BtnUpdate As Bunifu.Framework.UI.BunifuImageButton
     Friend WithEvents BtnSave As Bunifu.Framework.UI.BunifuImageButton
+    Friend WithEvents tBoxNome As Bunifu.Framework.UI.BunifuMaterialTextbox
+    Friend WithEvents LabelNome As System.Windows.Forms.Label
 
 End Class

@@ -30,7 +30,7 @@ Module io
     End Sub
 
 
-    Public Sub CreateMapHTML(latitude As String, longitude As String, IconColour As String, Label As String)
+    Public Sub CreateMapHTML() 'latitude As String, longitude As String, IconColour As String, Label As String)
         Dim file As System.IO.StreamWriter
         Dim path As String = My.Application.Info.DirectoryPath
         Dim relpath As String

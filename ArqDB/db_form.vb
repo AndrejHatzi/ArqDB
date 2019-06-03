@@ -1,5 +1,9 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
+'resto de talhe - desperdicio - lascas que saltam pequeninas
+'nome
+'
+
 Public Class db_form
 
     Private Sub db_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -39,13 +43,7 @@ Public Class db_form
         'periodo.Items.Add("Paleolítico Superior")
         'periodo.Items.Add("Romano")
         'periodo.Items.Add("Indeterminado")
-
         'MateriaPrimaCombo.AddItem("Nietzsche")
-
-
-
-
-
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -428,7 +426,7 @@ Public Class db_form
         'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
         'file.WriteLine(tBoxLatitude.Text & "," & tBoxLongitude.Text & "," & CorIconComboBox.selectedValue.ToString & "," & tBoxLegenda.Text)
         'file.Close()
-        'CreateMapHTML()
+        CreateMapHTML()
     End Sub
 
     Private Sub pBox_Click(sender As Object, e As EventArgs) Handles pBox.Click
@@ -490,7 +488,7 @@ Public Class db_form
             con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
             con.Open()
             comando.Connection = con
-            comando.CommandText = "INSERT INTO teste(code, freguesia,Date) VALUES(" & tBoxCodigo.Text & ",'" & tBoxFreguesia.Text & "','" & DateDate.Value.ToString("yyyy-MM-dd") & "')"
+            comando.CommandText = "INSERT INTO teste(code, freguesia, Date) VALUES(" & tBoxCodigo.Text & ",'" & tBoxFreguesia.Text & "','" & DateDate.Value.ToString("yyyy-MM-dd") & "')"
             comando.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("Erro de teste" & ex.Message, "Error")

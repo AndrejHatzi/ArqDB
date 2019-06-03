@@ -50,6 +50,7 @@ Partial Class Form1
         Me.SelectorPanel = New System.Windows.Forms.Panel()
         Me.Db_form1 = New ArqDB.db_form()
         Me.Options1 = New ArqDB.options()
+        Me.Mapstudio1 = New ArqDB.mapstudio()
         Me.header.SuspendLayout()
         CType(Me.BtnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnClose, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -624,12 +625,21 @@ Partial Class Form1
         Me.Options1.Size = New System.Drawing.Size(700, 594)
         Me.Options1.TabIndex = 9
         '
+        'Mapstudio1
+        '
+        Me.Mapstudio1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Mapstudio1.Location = New System.Drawing.Point(200, 96)
+        Me.Mapstudio1.Name = "Mapstudio1"
+        Me.Mapstudio1.Size = New System.Drawing.Size(697, 600)
+        Me.Mapstudio1.TabIndex = 20
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(900, 700)
+        Me.Controls.Add(Me.Mapstudio1)
         Me.Controls.Add(Me.Db_form1)
         Me.Controls.Add(Me.SelectorPanel)
         Me.Controls.Add(Me.BtnHomeSmall)
@@ -688,5 +698,6 @@ Partial Class Form1
     Friend WithEvents BtnBDSmall As Bunifu.Framework.UI.BunifuFlatButton
     Friend WithEvents SelectorPanel As System.Windows.Forms.Panel
     Friend WithEvents Db_form1 As ArqDB.db_form
+    Friend WithEvents Mapstudio1 As ArqDB.mapstudio
 
 End Class
