@@ -1,0 +1,40 @@
+Dim conexao As New MySqlConnection()
+    Dim ConnString = "SERVER=localhost; user=root; password='';database=bd_informatica"
+    Dim adaptador As New MySqlDataAdapter
+    Dim dados As New DataTable
+    Dim sql_str As String
+    Dim registos As MySqlDataReader
+    Dim utilizador
+
+    Public Function validauser(login As String, password As String) As Boolean
+        Dim conta As String = 0
+        validauser = False
+        conexao = New MySqlConnection ' cria a variavel para abrir a ligação a BD
+        conexao.ConnectionString = ConnString ' atribui a string de ligação a conexão a BD
+        sql_str = "SELECT password FROM assist_tecnicos WHERE username='" & login & "'"
+        Try
+            conexao.Open() 'abre a conexão
+            Try
+                Dim comando As MySqlCommand = New MySqlCommand(sql_str, conexao)
+                registos = comando.ExecuteReader
+                While registos.Read()
+                    conta = registos("password").ToString() 'Mostra o resultado da query() '
+                End While
+                If conta = password Then
+                    validauser = True
+                    conexao.Close()
+                    Return validauser
+                    Exit Function
+                End If
+                'MessageBox.Show(conta)
+            Catch erro As MySqlException
+                MessageBox.Show("Erro ao tentar ler a base de dados" &
+               erro.Message)
+            End Try
+        Catch erro As MySqlException
+            MessageBox.Show("Erro ao tentar ligar com o banco de dados",
+           "atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Finally
+            conexao.Dispose()
+        End Try
+    End Function
