@@ -35,7 +35,7 @@
         Form1.Db_form1.labelLargura.Text = "Largura"
         Form1.Db_form1.labelEspessura.Text = "Espessura"
         Form1.Db_form1.labelcoordenadas.Text = "Coordenadas"
-        Form1.Db_form1.labelbibliografia.Text = "Bibliografia"
+        'Form1.Db_form1.labelbibliografia.Text = "Bibliografia"
         'db_form Materia Prima
         Form1.Db_form1.MateriaPrimaCombo.Clear()
         Form1.Db_form1.MateriaPrimaCombo.AddItem("Quartzo Hialino")
@@ -149,7 +149,7 @@
         Form1.Db_form1.labelLargura.Text = "Width"
         Form1.Db_form1.labelEspessura.Text = "thickness"
         Form1.Db_form1.labelcoordenadas.Text = "Coordinates"
-        Form1.Db_form1.labelbibliografia.Text = "Bibliography"
+        'Form1.Db_form1.labelbibliografia.Text = "Bibliography"
         'db_form Materia Prima
         Form1.Db_form1.MateriaPrimaCombo.Clear()
         Form1.Db_form1.MateriaPrimaCombo.AddItem("Hyaline Quartz")

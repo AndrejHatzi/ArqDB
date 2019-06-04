@@ -424,7 +424,7 @@ Module stdio
     '            conexao.Dispose()
     '        End Try
     '    End If
-    Public Function InsertItemsDatabase(pBox As Object, Code As Object, DateDate As String, TownHall As Object, Parish As Object, Place As Object, Epoch As Object, RawMaterial As Object, Description As Object, Base As Object, Technology As Object, Length As Object, Width As Object, Thickness As Object, Latitude As Object, Longitude As Object, Bibliography As Object, Message As String) As Boolean
+    Public Function InsertItemsDatabase(pBox As Object, Code As Object, DateDate As String, TownHall As Object, Parish As Object, Place As Object, Epoch As Object, RawMaterial As Object, Description As Object, Base As Object, Technology As Object, Length As Object, Width As Object, Thickness As Object, Latitude As Object, Longitude As Object, Message As String) As Boolean
         Dim con As New MySqlConnection()
         Dim comando As New MySqlCommand
         Dim dsql As String
@@ -434,7 +434,7 @@ Module stdio
             con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
             con.Open()
             comando.Connection = con
-            dsql = "INSERT INTO items(Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude, Bibliography, Image) VALUES(" & Code.text & ",'" & DateDate & "','" & TownHall.text & "','" & Parish.text & "','" & Place.text & "','" & Epoch.selectedValue.ToString() & "','" & RawMaterial.selectedValue.ToString() & "','" & Description.selectedValue.ToString() & "','" & Base.text & "','" & Technology.text & "'," & Length.text & "," & Width.text & "," & Thickness.text & "," & Latitude.text & "," & Longitude.text & ",'" & Bibliography.text & "',@img)"
+            dsql = "INSERT INTO items(Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude, Image) VALUES(" & Code.text & ",'" & DateDate & "','" & TownHall.text & "','" & Parish.text & "','" & Place.text & "','" & Epoch.selectedValue.ToString() & "','" & RawMaterial.selectedValue.ToString() & "','" & Description.selectedValue.ToString() & "','" & Base.text & "','" & Technology.text & "'," & Length.text & "," & Width.text & "," & Thickness.text & "," & Latitude.text & "," & Longitude.text & ",@img)"
             MessageBox.Show(dsql)
             Debug.Print(dsql)
             comando.CommandText = dsql

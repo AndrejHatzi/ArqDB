@@ -311,15 +311,15 @@
 
                 Options1.Location = New Point(0, 38)
                 Options1.Width = 900
-                Options1.Height = 512
+                Options1.Height = 600
 
                 Db_form1.Location = New Point(0, 38)
                 Db_form1.Width = 900
-                Db_form1.Height = 512
+                Db_form1.Height = 600
 
                 Mapstudio1.Location = New Point(0, 38)
                 Mapstudio1.Width = 900
-                Mapstudio1.Height = 512
+                Mapstudio1.Height = 600
 
 
 
@@ -329,15 +329,15 @@
                 'Options1.Top = ""
                 Options1.Location = New Point(200, 38)
                 Options1.Width = 700
-                Options1.Height = 512
+                Options1.Height = 600
 
                 Db_form1.Location = New Point(200, 38)
                 Db_form1.Width = 700
-                Db_form1.Height = 512
+                Db_form1.Height = 600
 
                 Mapstudio1.Location = New Point(200, 38)
                 Mapstudio1.Width = 700
-                Mapstudio1.Height = 512
+                Mapstudio1.Height = 600
 
                 SelectorPanel.Visible = 1
 

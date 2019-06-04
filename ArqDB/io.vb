@@ -30,7 +30,7 @@ Module io
     End Sub
 
 
-    Public Sub CreateMapHTML() 'latitude As String, longitude As String, IconColour As String, Label As String)
+    Public Sub CreateMapHTML(latitude As String, longitude As String, IconColour As String, Label As String)
         Dim file As System.IO.StreamWriter
         Dim path As String = My.Application.Info.DirectoryPath
         Dim relpath As String
@@ -86,15 +86,15 @@ Module io
         file.WriteLine("  {'attribution': 'Data by \u0026copy; \u003ca href=\'http://openstreetmap.org\'\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\'http://www.openstreetmap.org/copyright\'\u003eODbL\u003c/a\u003e.', 'detectRetina': false, 'maxNativeZoom': 18, 'maxZoom': 18, 'minZoom': 0, 'noWrap': false, 'opacity': 1, 'subdomains': 'abc', 'tms': false}")
         file.WriteLine(").addTo(map_8d82423173704cfe89ef80a2889ff409);")
         file.WriteLine("var marker_8fa4876c4c5a4efdbd005aecc64c5ce1 = L.marker(")
-        file.WriteLine("  [52.2322, 21.0083],")
+        file.WriteLine("  [" & latitude & "," & longitude & "],")
         file.WriteLine("{}")
         file.WriteLine(").addTo(map_8d82423173704cfe89ef80a2889ff409);")
         file.WriteLine("var icon_fe71723e2c9e4224bcf8b3218b987430 = L.AwesomeMarkers.icon(")
-        file.WriteLine("{'extraClasses': 'fa-rotate-0', 'icon': 'info-sign', 'iconColor': 'white', 'markerColor': 'purple', 'prefix': 'glyphicon'}")
+        file.WriteLine("{'extraClasses': 'fa-rotate-0', 'icon': 'info-sign', 'iconColor': 'white', 'markerColor': '" & IconColour & "', 'prefix': 'glyphicon'}")
         file.WriteLine(");")
         file.WriteLine("marker_8fa4876c4c5a4efdbd005aecc64c5ce1.setIcon(icon_fe71723e2c9e4224bcf8b3218b987430);")
         file.WriteLine("popup_e314ff6cfb16410bbc2a3a1f88cd2425 = L.popup({'maxWidth': '100%'});")
-        file.WriteLine("var html_894d79bdf3f046df8497af07e4e63b32 = $(`<div id='html_894d79bdf3f046df8497af07e4e63b32' style='width: 100.0%; height: 100.0%;'>Warsaw</div>`)[0];")
+        file.WriteLine("var html_894d79bdf3f046df8497af07e4e63b32 = $(`<div id='html_894d79bdf3f046df8497af07e4e63b32' style='width: 100.0%; height: 100.0%;'>" & Label & "</div>`)[0];")
         file.WriteLine("popup_e314ff6cfb16410bbc2a3a1f88cd2425.setContent(html_894d79bdf3f046df8497af07e4e63b32);")
         file.WriteLine("marker_8fa4876c4c5a4efdbd005aecc64c5ce1.bindPopup(popup_e314ff6cfb16410bbc2a3a1f88cd2425);")
         file.WriteLine("</script>")

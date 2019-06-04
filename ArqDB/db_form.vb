@@ -334,7 +334,7 @@ Public Class db_form
         'My.Computer.FileSystem.WriteAllText(relpath, tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text, True)
         'InsertItems(pBox.Image, tBoxCodigo, tBoxFreguesia)
         'InsertItemsV2(pBox, tBoxCodigo, tBoxFreguesia)
-        InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, tBoxBibliografia, "Erro ao Inserir Dados")
+        InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
         If ColourSelector.Location.X = ColourBlue.Location.X Then
             sqrColour = "cadetblue"
         ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
@@ -426,7 +426,7 @@ Public Class db_form
         'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
         'file.WriteLine(tBoxLatitude.Text & "," & tBoxLongitude.Text & "," & CorIconComboBox.selectedValue.ToString & "," & tBoxLegenda.Text)
         'file.Close()
-        CreateMapHTML()
+        CreateMapHTML(tBoxLatitude.Text, tBoxLongitude.Text, "green", tBoxLegenda.Text)
     End Sub
 
     Private Sub pBox_Click(sender As Object, e As EventArgs) Handles pBox.Click

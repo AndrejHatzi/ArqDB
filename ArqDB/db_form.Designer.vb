@@ -36,7 +36,6 @@ Partial Class db_form
         Me.labelLargura = New System.Windows.Forms.Label()
         Me.labelEspessura = New System.Windows.Forms.Label()
         Me.labelcoordenadas = New System.Windows.Forms.Label()
-        Me.labelbibliografia = New System.Windows.Forms.Label()
         Me.DateDate = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.LabelFreguesia = New System.Windows.Forms.Label()
         Me.MateriaPrimaCombo = New Bunifu.Framework.UI.BunifuDropdown()
@@ -62,7 +61,6 @@ Partial Class db_form
         Me.pBox = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tBoxLegenda = New Bunifu.Framework.UI.BunifuMaterialTextbox()
-        Me.tBoxBibliografia = New Bunifu.Framework.UI.BunifuMaterialTextbox()
         Me.ColourPurple = New Bunifu.Framework.UI.BunifuTileButton()
         Me.ColourOrange = New Bunifu.Framework.UI.BunifuTileButton()
         Me.ColourBlue = New Bunifu.Framework.UI.BunifuTileButton()
@@ -220,17 +218,6 @@ Partial Class db_form
         Me.labelcoordenadas.Size = New System.Drawing.Size(124, 24)
         Me.labelcoordenadas.TabIndex = 20
         Me.labelcoordenadas.Text = "Coordenadas"
-        '
-        'labelbibliografia
-        '
-        Me.labelbibliografia.AutoSize = True
-        Me.labelbibliografia.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelbibliografia.ForeColor = System.Drawing.SystemColors.Control
-        Me.labelbibliografia.Location = New System.Drawing.Point(93, 526)
-        Me.labelbibliografia.Name = "labelbibliografia"
-        Me.labelbibliografia.Size = New System.Drawing.Size(101, 24)
-        Me.labelbibliografia.TabIndex = 22
-        Me.labelbibliografia.Text = "Bibliografia"
         '
         'DateDate
         '
@@ -628,25 +615,6 @@ Partial Class db_form
         Me.tBoxLegenda.TabIndex = 83
         Me.tBoxLegenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
-        'tBoxBibliografia
-        '
-        Me.tBoxBibliografia.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.tBoxBibliografia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tBoxBibliografia.ForeColor = System.Drawing.SystemColors.Control
-        Me.tBoxBibliografia.HintForeColor = System.Drawing.SystemColors.Control
-        Me.tBoxBibliografia.HintText = ""
-        Me.tBoxBibliografia.isPassword = False
-        Me.tBoxBibliografia.LineFocusedColor = System.Drawing.SystemColors.Control
-        Me.tBoxBibliografia.LineIdleColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.tBoxBibliografia.LineMouseHoverColor = System.Drawing.SystemColors.Control
-        Me.tBoxBibliografia.LineThickness = 3
-        Me.tBoxBibliografia.Location = New System.Drawing.Point(201, 519)
-        Me.tBoxBibliografia.Margin = New System.Windows.Forms.Padding(4)
-        Me.tBoxBibliografia.Name = "tBoxBibliografia"
-        Me.tBoxBibliografia.Size = New System.Drawing.Size(185, 31)
-        Me.tBoxBibliografia.TabIndex = 84
-        Me.tBoxBibliografia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        '
         'ColourPurple
         '
         Me.ColourPurple.BackColor = System.Drawing.Color.Purple
@@ -761,7 +729,6 @@ Partial Class db_form
         Me.Controls.Add(Me.ColourBlue)
         Me.Controls.Add(Me.ColourOrange)
         Me.Controls.Add(Me.ColourPurple)
-        Me.Controls.Add(Me.tBoxBibliografia)
         Me.Controls.Add(Me.tBoxLegenda)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.pBox)
@@ -787,7 +754,6 @@ Partial Class db_form
         Me.Controls.Add(Me.MateriaPrimaCombo)
         Me.Controls.Add(Me.LabelFreguesia)
         Me.Controls.Add(Me.DateDate)
-        Me.Controls.Add(Me.labelbibliografia)
         Me.Controls.Add(Me.labelcoordenadas)
         Me.Controls.Add(Me.labelEspessura)
         Me.Controls.Add(Me.labelLargura)
@@ -826,7 +792,6 @@ Partial Class db_form
     Friend WithEvents labelLargura As System.Windows.Forms.Label
     Friend WithEvents labelEspessura As System.Windows.Forms.Label
     Friend WithEvents labelcoordenadas As System.Windows.Forms.Label
-    Friend WithEvents labelbibliografia As System.Windows.Forms.Label
     Friend WithEvents DateDate As Bunifu.Framework.UI.BunifuDatepicker
     Friend WithEvents LabelFreguesia As System.Windows.Forms.Label
     Friend WithEvents MateriaPrimaCombo As Bunifu.Framework.UI.BunifuDropdown
@@ -852,7 +817,6 @@ Partial Class db_form
     Friend WithEvents pBox As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents tBoxLegenda As Bunifu.Framework.UI.BunifuMaterialTextbox
-    Friend WithEvents tBoxBibliografia As Bunifu.Framework.UI.BunifuMaterialTextbox
     Friend WithEvents ColourPurple As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents ColourOrange As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents ColourBlue As Bunifu.Framework.UI.BunifuTileButton
