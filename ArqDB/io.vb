@@ -36,6 +36,11 @@ Module io
         Dim relpath As String
         'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
         relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\teste.html")
+        Try
+            My.Computer.FileSystem.DeleteFile(relpath)
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        End Try
         file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
         file.WriteLine("<head>")
         file.WriteLine("<meta http-equiv='content-type' content='text/html; charset=UTF-8' />")

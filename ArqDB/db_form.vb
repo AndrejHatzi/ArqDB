@@ -8,6 +8,24 @@ Public Class db_form
 
     Private Sub db_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ColourSelector.Visible = 0
+        ImgIndicator.Visible = 0
+
+        'Dim path As String = My.Application.Info.DirectoryPath
+        'Dim relpath, primeira_linha As String
+        'Dim fileReader As System.IO.StreamReader
+        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
+        'fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
+        'primeira_linha = fileReader.ReadLine()
+        'If File.Exists(relpath) Then
+        'If Form1.Options1.language = 0 Then
+        ' tBoxCodigo.Text = "Ultimo Código foi " & primeira_linha
+        ' Else
+        ' tBoxCodigo.Text = "Last written code was " & primeira_linha
+        'End If
+        'Else
+        'tBoxCodigo.Text = ""
+        'End If
+
 
 
 
@@ -21,9 +39,6 @@ Public Class db_form
         'For Each item In items
         '    PeriodoCombo.Items.Add(item)
         'Next
-
-
-
         'PeriodoCombo.Items.SetValue = ("Alta Idade Média")
         'periodo.Items.Add("Baixa Idade Média")
         'periodo.Items.Add("Calcolítico")
@@ -212,6 +227,42 @@ Public Class db_form
         tBoxCodigo.HintForeColor = Color.White
         tBoxCodigo.ForeColor = Color.White
     End Sub
+
+    Private Sub tBoxCodigo_GotFocus(sender As Object, e As EventArgs) Handles tBoxCodigo.GotFocus
+        If Form1.Options1.language = 0 Then
+            If tBoxCodigo.Text.Contains("Ultimo Código foi ") Then
+                tBoxCodigo.Text = ""
+            End If
+        Else
+            If tBoxCodigo.Text.Contains("Last written code was ") Then
+                tBoxCodigo.Text = ""
+            End If
+        End If
+
+        'If tBoxCodigo.Text.Length  Then
+        'tBoxCodigo.Text = ""
+        'End If
+    End Sub
+
+    Private Sub tBoxCodigo_LostFocus(sender As Object, e As EventArgs) Handles tBoxCodigo.LostFocus
+        Dim fileReader As System.IO.StreamReader
+        Dim primeira_linha As String
+        Dim path As String = My.Application.Info.DirectoryPath
+        Dim relpath As String
+        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
+        fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
+        primeira_linha = fileReader.ReadLine()
+        If Form1.Options1.language = 0 Then
+            If tBoxCodigo.Text = "" Then
+                tBoxCodigo.Text = "Ultimo Código foi " & primeira_linha
+            End If
+        Else
+            If tBoxCodigo.Text = "" Then
+                tBoxCodigo.Text = "Last written code was " & primeira_linha
+            End If
+        End If
+
+    End Sub
     Private Sub tBoxCodigo_OnValueChanged(sender As Object, e As EventArgs) Handles tBoxCodigo.OnValueChanged
         tBoxCodigo.HintForeColor = Color.White
         tBoxCodigo.ForeColor = Color.White
@@ -313,9 +364,29 @@ Public Class db_form
         tBoxLongitude.ForeColor = Color.White
     End Sub
 
+    Private Sub tBoxLegenda_OnValueChanged(sender As Object, e As EventArgs) Handles tBoxLegenda.OnValueChanged
+        tBoxLegenda.HintForeColor = Color.White
+        tBoxLegenda.ForeColor = Color.White
+    End Sub
+
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
-        Dim sqrColour, Message As String
-        Message = "Escolha uma cor para o Icone"
+        Dim sqrColour
+        'Dim file As System.IO.StreamWriter
+        'Dim path As String = My.Application.Info.DirectoryPath
+        'Dim relpath As String
+        ''F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
+        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
+        'Try
+        '    My.Computer.FileSystem.DeleteFile(relpath)
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.ToString)
+        'End Try
+
+        'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
+        'file.WriteLine(tBoxCodigo.Text)
+        'file.Close()
+        ', Message As String
+        'Message = "Escolha uma cor para o Icone"
         'DescricaoCombo.selectedValue.ToString()
         'Dim objStreamWriter As StreamWriter
         'Dim path As String = My.Application.Info.DirectoryPath
@@ -334,7 +405,139 @@ Public Class db_form
         'My.Computer.FileSystem.WriteAllText(relpath, tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text, True)
         'InsertItems(pBox.Image, tBoxCodigo, tBoxFreguesia)
         'InsertItemsV2(pBox, tBoxCodigo, tBoxFreguesia)
-        InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
+
+        
+
+
+        Dim Message As String
+        If Form1.Options1.language = 0 Then
+            Message = "Não Preenchido"
+        ElseIf Form1.Options1.language = 1 Then
+            Message = "Not Filled"
+        End If
+
+        MessageBox.Show(Form1.Options1.language)
+        If tBoxCodigo.Text.Length = 0 Then
+            tBoxCodigo.Text = Message
+            tBoxCodigo.HintForeColor = Color.Red
+            tBoxCodigo.ForeColor = Color.Red
+        End If
+        If tBoxConcelho.Text.Length = 0 Then
+
+            tBoxConcelho.Text = Message
+            tBoxConcelho.HintForeColor = Color.Red
+            tBoxConcelho.ForeColor = Color.Red
+        End If
+        If tBoxFreguesia.Text.Length = 0 Then
+
+            tBoxFreguesia.Text = Message
+            tBoxFreguesia.HintForeColor = Color.Red
+            tBoxFreguesia.ForeColor = Color.Red
+        End If
+        If tBoxLugar.Text.Length = 0 Then
+
+            tBoxLugar.Text = Message
+            tBoxLugar.HintForeColor = Color.Red
+            tBoxLugar.ForeColor = Color.Red
+        End If
+        If tBoxSuporte.Text.Length = 0 Then
+
+            tBoxSuporte.Text = Message
+            tBoxSuporte.HintForeColor = Color.Red
+            tBoxSuporte.ForeColor = Color.Red
+        End If
+        If tBoxTecnologia.Text.Length = 0 Then
+
+            tBoxTecnologia.Text = Message
+            tBoxTecnologia.HintForeColor = Color.Red
+            tBoxTecnologia.ForeColor = Color.Red
+        End If
+        If tBoxComprimento.Text.Length = 0 Then
+
+            tBoxComprimento.Text = Message
+            tBoxComprimento.HintForeColor = Color.Red
+            tBoxComprimento.ForeColor = Color.Red
+        End If
+        If tBoxLargura.Text.Length = 0 Then
+
+            tBoxLargura.Text = Message
+            tBoxLargura.HintForeColor = Color.Red
+            tBoxLargura.ForeColor = Color.Red
+        End If
+        If tBoxEspessura.Text.Length = 0 Then
+
+            tBoxEspessura.Text = Message
+            tBoxEspessura.HintForeColor = Color.Red
+            tBoxEspessura.ForeColor = Color.Red
+        End If
+        If tBoxLatitude.Text.Length = 0 Then
+
+            tBoxLatitude.Text = Message
+            tBoxLatitude.HintForeColor = Color.Red
+            tBoxLatitude.ForeColor = Color.Red
+        End If
+        If tBoxLongitude.Text.Length = 0 Then
+            tBoxLongitude.Text = Message
+            tBoxLongitude.HintForeColor = Color.Red
+            tBoxLongitude.ForeColor = Color.Red
+        End If
+        If tBoxLegenda.Text.Length = 0 Then
+            tBoxLegenda.Text = Message
+            tBoxLegenda.HintForeColor = Color.Red
+            tBoxLegenda.ForeColor = Color.Red
+        End If
+        If pBox.Image Is Nothing Then
+            ImgIndicator.Visible = 1
+        End If
+
+        If (tBoxCodigo.Text <> "" And tBoxConcelho.Text <> "" And tBoxFreguesia.Text <> "" And tBoxLugar.Text <> "" And tBoxSuporte.Text <> "" And tBoxTecnologia.Text <> "" And tBoxComprimento.Text <> "" And tBoxLargura.Text <> "" And tBoxEspessura.Text <> "" And tBoxLatitude.Text <> "" And tBoxLongitude.Text <> "") Then
+            If (PeriodoCombo.selectedIndex <> -1 And MateriaPrimaCombo.selectedIndex <> -1 And DescricaoCombo.selectedIndex <> -1 And pBox.Image Is Nothing = False) Then
+                InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
+                If ColourSelector.Location.X = ColourBlue.Location.X Then
+                    sqrColour = "cadetblue"
+                ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
+                    sqrColour = "orange"
+                ElseIf ColourSelector.Location.X = ColourRed.Location.X Then
+                    sqrColour = "red"
+                ElseIf ColourSelector.Location.X = ColourPurple.Location.X Then
+                    sqrColour = "purple"
+                ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
+                    sqrColour = "pink"
+                End If
+                If sqrColour <> "" Then
+                    InsertMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, "Generico")
+                End If
+            End If
+        End If
+
+
+
+    End Sub
+
+
+    'tBoxCodigo, tBoxConcelho, tBoxFreguesia, tBoxLugar, tBoxSuporte, 
+    'tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, BibliografiaTextBox
+
+    Private Sub BtnLocalizar_Click(sender As Object, e As EventArgs) Handles BtnLocalizar.Click
+        Dim sqrColour, Message, aviso, NotFilled As String
+        Dim latP, logP, legP As Integer
+
+        latP = logP = legP = 0
+
+        If Form1.Options1.language = 0 Then
+            Message = "Escolha uma cor para o Icone!"
+            aviso = "Aviso"
+        Else
+            Message = "Choose a colour for the Icon"
+            aviso = "Warning"
+        End If
+
+        If Form1.Options1.language = 0 Then
+            NotFilled = "Não Preenchido"
+        ElseIf Form1.Options1.language = 1 Then
+            NotFilled = "Not Filled"
+        End If
+
         If ColourSelector.Location.X = ColourBlue.Location.X Then
             sqrColour = "cadetblue"
         ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
@@ -345,88 +548,36 @@ Public Class db_form
             sqrColour = "purple"
         ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
             sqrColour = "pink"
-        End If
-        If sqrColour = "" Then
-            MessageBox.Show(Message)
         Else
-            InsertMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, Message)
+            MessageBox.Show(Message, aviso)
         End If
 
+        If tBoxLatitude.Text.Length = 0 Then
+            tBoxLatitude.Text = NotFilled
+            tBoxLatitude.HintForeColor = Color.Red
+            tBoxLatitude.ForeColor = Color.Red
+        Else
+            latP = 1
+        End If
 
+        If tBoxLongitude.Text.Length = 0 Then
+            tBoxLongitude.Text = NotFilled
+            tBoxLongitude.HintForeColor = Color.Red
+            tBoxLongitude.ForeColor = Color.Red
+        Else
+            logP = 1
+        End If
+        If tBoxLegenda.Text.Length = 0 Then
+            tBoxLegenda.Text = NotFilled
+            tBoxLegenda.HintForeColor = Color.Red
+            tBoxLegenda.ForeColor = Color.Red
+        Else
+            legP = 1
+        End If
 
-
-    End Sub
-
-
-    'tBoxCodigo, tBoxConcelho, tBoxFreguesia, tBoxLugar, tBoxSuporte, 
-    'tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, BibliografiaTextBox
-
-    Private Sub CorIconComboBox_onItemSelected(sender As Object, e As EventArgs)
-        'If CorIconComboBox.selectedValue.ToString = "Verde Claro" Or CorIconComboBox.selectedValue.ToString = "LightGreen" Then
-        '    CorIconComboBox.NomalColor = Color.LightGreen
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkRed" Then
-        '    CorIconComboBox.NomalColor = Color.DarkRed
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Branco" Or CorIconComboBox.selectedValue.ToString = "White" Then
-        '    CorIconComboBox.NomalColor = Color.White
-        '    CorIconComboBox.ForeColor = Color.Black
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Roxo" Or CorIconComboBox.selectedValue.ToString = "Purple" Then
-        '    CorIconComboBox.NomalColor = Color.Purple
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Laranja" Or CorIconComboBox.selectedValue.ToString = "Orange" Then
-        '    CorIconComboBox.NomalColor = Color.Orange
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul" Or CorIconComboBox.selectedValue.ToString = "Blue" Then
-        '    CorIconComboBox.NomalColor = Color.Blue
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento Claro" Or CorIconComboBox.selectedValue.ToString = "LightGray" Then
-        '    CorIconComboBox.NomalColor = Color.LightGray
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul Claro" Or CorIconComboBox.selectedValue.ToString = "LightBlue" Then
-        '    CorIconComboBox.NomalColor = Color.LightBlue
-        '    CorIconComboBox.ForeColor = Color.Black
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Cinzento" Or CorIconComboBox.selectedValue.ToString = "Gray" Then
-        '    CorIconComboBox.NomalColor = Color.Gray
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho" Or CorIconComboBox.selectedValue.ToString = "Red" Then
-        '    CorIconComboBox.NomalColor = Color.Red
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Verde" Or CorIconComboBox.selectedValue.ToString = "Green" Then
-        '    CorIconComboBox.NomalColor = Color.Green
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Roxo Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkPurple" Then
-        '    CorIconComboBox.NomalColor = Color.MediumPurple
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Verde Escuro" Or CorIconComboBox.selectedValue.ToString = "DarkGreen" Then
-        '    CorIconComboBox.NomalColor = Color.DarkGreen
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Azul Cadete" Or CorIconComboBox.selectedValue.ToString = "CadetBlue" Then
-        '    CorIconComboBox.NomalColor = Color.CadetBlue
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Rosa" Or CorIconComboBox.selectedValue.ToString = "Pink" Then
-        '    CorIconComboBox.NomalColor = Color.Pink
-        '    CorIconComboBox.ForeColor = Color.White
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Bege" Or CorIconComboBox.selectedValue.ToString = "Beige" Then
-        '    CorIconComboBox.NomalColor = Color.Beige
-        '    CorIconComboBox.ForeColor = Color.Black
-        'ElseIf CorIconComboBox.selectedValue.ToString = "Vermelho Claro" Or CorIconComboBox.selectedValue.ToString = "LightRed" Then
-        '    CorIconComboBox.NomalColor = Color.IndianRed
-        '    CorIconComboBox.ForeColor = Color.White
-        'Else
-        'End If
-    End Sub
-
-    Private Sub BtnLocalizar_Click(sender As Object, e As EventArgs) Handles BtnLocalizar.Click
-        'Dim file As System.IO.StreamWriter
-        'Dim path As String = My.Application.Info.DirectoryPath
-        'Dim relpath As String
-        ''F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\current_loc.lc")
-        'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
-        'file.WriteLine(tBoxLatitude.Text & "," & tBoxLongitude.Text & "," & CorIconComboBox.selectedValue.ToString & "," & tBoxLegenda.Text)
-        'file.Close()
-        CreateMapHTML(tBoxLatitude.Text, tBoxLongitude.Text, "green", tBoxLegenda.Text)
+        If logP = 1 And latP = 1 And legP = 1 Then
+            CreateMapHTML(tBoxLatitude.Text, tBoxLongitude.Text, sqrColour, tBoxLegenda.Text)
+        End If
     End Sub
 
     Private Sub pBox_Click(sender As Object, e As EventArgs) Handles pBox.Click
@@ -478,7 +629,14 @@ Public Class db_form
     End Sub
 
     Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
-        MessageBox.Show(DateDate.Value.ToString("yyyy-MM-dd"))
+        'MessageBox.Show(DateDate.Value.ToString("yyyy-MM-dd"))
+        Dim path As String = My.Application.Info.DirectoryPath
+        Dim relpath, primeira_linha As String
+        Dim fileReader As System.IO.StreamReader
+        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastcode.cd")
+        fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
+        primeira_linha = fileReader.ReadLine()
+        MessageBox.Show(primeira_linha)
     End Sub
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click

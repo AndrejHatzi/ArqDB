@@ -94,7 +94,7 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Options1.language = 0
-
+        Db_form1.BringToFront()
         'Db_form1.CorIconComboBox.Clear()
         'Db_form1.CorIconComboBox.AddItem("Verde Claro")
         'Db_form1.CorIconComboBox.AddItem("Verde Escuro")

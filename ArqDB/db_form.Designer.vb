@@ -67,12 +67,15 @@ Partial Class db_form
         Me.ColourPink = New Bunifu.Framework.UI.BunifuTileButton()
         Me.ColourRed = New Bunifu.Framework.UI.BunifuTileButton()
         Me.ColourSelector = New System.Windows.Forms.Panel()
+        Me.ImgIndicator = New System.Windows.Forms.Panel()
+        Me.BtnLocalizarTodos = New Bunifu.Framework.UI.BunifuImageButton()
         CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnDelete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnLocalizar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ButtonSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnLocalizarTodos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Labelcodigo
@@ -345,7 +348,7 @@ Partial Class db_form
         Me.ButtonSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.ButtonSettings.Image = CType(resources.GetObject("ButtonSettings.Image"), System.Drawing.Image)
         Me.ButtonSettings.ImageActive = Nothing
-        Me.ButtonSettings.Location = New System.Drawing.Point(848, 215)
+        Me.ButtonSettings.Location = New System.Drawing.Point(848, 269)
         Me.ButtonSettings.Name = "ButtonSettings"
         Me.ButtonSettings.Size = New System.Drawing.Size(44, 47)
         Me.ButtonSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -718,11 +721,33 @@ Partial Class db_form
         Me.ColourSelector.Size = New System.Drawing.Size(24, 10)
         Me.ColourSelector.TabIndex = 90
         '
+        'ImgIndicator
+        '
+        Me.ImgIndicator.BackColor = System.Drawing.Color.Red
+        Me.ImgIndicator.Location = New System.Drawing.Point(541, 375)
+        Me.ImgIndicator.Name = "ImgIndicator"
+        Me.ImgIndicator.Size = New System.Drawing.Size(241, 10)
+        Me.ImgIndicator.TabIndex = 91
+        '
+        'BtnLocalizarTodos
+        '
+        Me.BtnLocalizarTodos.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.BtnLocalizarTodos.Image = CType(resources.GetObject("BtnLocalizarTodos.Image"), System.Drawing.Image)
+        Me.BtnLocalizarTodos.ImageActive = Nothing
+        Me.BtnLocalizarTodos.Location = New System.Drawing.Point(848, 216)
+        Me.BtnLocalizarTodos.Name = "BtnLocalizarTodos"
+        Me.BtnLocalizarTodos.Size = New System.Drawing.Size(44, 47)
+        Me.BtnLocalizarTodos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnLocalizarTodos.TabIndex = 92
+        Me.BtnLocalizarTodos.TabStop = False
+        Me.BtnLocalizarTodos.Zoom = 20
+        '
         'db_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Controls.Add(Me.BtnLocalizarTodos)
         Me.Controls.Add(Me.ColourSelector)
         Me.Controls.Add(Me.ColourRed)
         Me.Controls.Add(Me.ColourPink)
@@ -767,6 +792,7 @@ Partial Class db_form
         Me.Controls.Add(Me.LabelConcelho)
         Me.Controls.Add(Me.Labeldata)
         Me.Controls.Add(Me.Labelcodigo)
+        Me.Controls.Add(Me.ImgIndicator)
         Me.Name = "db_form"
         Me.Size = New System.Drawing.Size(895, 600)
         CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).EndInit()
@@ -775,6 +801,7 @@ Partial Class db_form
         CType(Me.BtnLocalizar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ButtonSettings, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnLocalizarTodos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -823,5 +850,7 @@ Partial Class db_form
     Friend WithEvents ColourPink As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents ColourRed As Bunifu.Framework.UI.BunifuTileButton
     Friend WithEvents ColourSelector As System.Windows.Forms.Panel
+    Friend WithEvents ImgIndicator As System.Windows.Forms.Panel
+    Friend WithEvents BtnLocalizarTodos As Bunifu.Framework.UI.BunifuImageButton
 
 End Class
