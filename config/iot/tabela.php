@@ -62,6 +62,7 @@ echo "<table data-vertable='ver2'>
 			<th class='column100 column6' data-column='column6'>Localidade</th>
 			<th class='column100 column7' data-column='column7'>Distrito</th>
 			<th class='column100 column8' data-column='column8'>Telemóvel</th>
+			<th class='column100 column9' data-column='column9'>Eliminar</th>
 		</tr>
 	</thead>
 	<tbody>";
@@ -77,9 +78,8 @@ echo "<table data-vertable='ver2'>
 		echo "<td class='column100 column$i' data-column='column$i'>".$row_Recordset['localidade']."</td>";
 		echo "<td class='column100 column$i' data-column='column$i'>".$row_Recordset['distrito']."</td>";
 		echo "<td class='column100 column$i' data-column='column$i'>".$row_Recordset['telemovel']."</td>";
-		echo "</tr>";?>
-		<input type="button" onClick="deleteme(<?php echo $row_Recordset['nif'];?>)" name="Delete">
-	<?php
+		echo "<td class='column100 column$i' data-column='column$i'>";?><input type="button" onClick="deleteme(<?php echo $row_Recordset['nif'];?>)" name="Delete" value="Delete">
+	<?php echo "</td></tr>";
 	} while ($row_Recordset = mysqli_fetch_assoc($recordset));
 echo "</tbody>";
 echo "</table></div>";
