@@ -182,18 +182,19 @@
         activate = False
         activateSmall = False
 
-        Options1.Location = New Point(0, 38)
+        Options1.Location = New Point(0, 45)
         Options1.Width = 900
         Options1.Height = 600
 
-        Mapstudio1.Location = New Point(0, 38)
+        Mapstudio1.Location = New Point(0, 45)
         Mapstudio1.Width = 900
         Mapstudio1.Height = 600
 
-        Db_form1.Location = New Point(0, 38)
+        Db_form1.Location = New Point(0, 45)
         Db_form1.Width = 900
         Db_form1.Height = 600
 
+        '895, 600
 
         SelectorPanel.Height = BtnHome.Height - 1
         SelectorPanel.Top = BtnHome.Top
@@ -309,15 +310,15 @@
                 SelectorPanel.Visible = 0
                 activate = True
 
-                Options1.Location = New Point(0, 38)
+                Options1.Location = New Point(0, 45) '38
                 Options1.Width = 900
                 Options1.Height = 600
 
-                Db_form1.Location = New Point(0, 38)
+                Db_form1.Location = New Point(0, 45) '38
                 Db_form1.Width = 900
                 Db_form1.Height = 600
 
-                Mapstudio1.Location = New Point(0, 38)
+                Mapstudio1.Location = New Point(0, 45) '38
                 Mapstudio1.Width = 900
                 Mapstudio1.Height = 600
 
@@ -327,36 +328,55 @@
                 W = 10
                 'Options1.Left = ""
                 'Options1.Top = ""
-                Options1.Location = New Point(200, 38)
-                Options1.Width = 700
+                Options1.Location = New Point(0, 45) '200, 38
+                Options1.Width = 900
                 Options1.Height = 600
 
-                Db_form1.Location = New Point(200, 38)
-                Db_form1.Width = 700
+                Db_form1.Location = New Point(0, 45)
+                Db_form1.Width = 900
                 Db_form1.Height = 600
 
-                Mapstudio1.Location = New Point(200, 38)
-                Mapstudio1.Width = 700
+                Mapstudio1.Location = New Point(0, 45)
+                Mapstudio1.Width = 900
                 Mapstudio1.Height = 600
 
-                SelectorPanel.Visible = 1
+                
 
                 BtnHome.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnHome.BringToFront()
+
                 PanelHomeOne.Visible = 1
                 Threading.Thread.Sleep(W)
+                PanelHomeOne.BringToFront()
+
                 BtnBD.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnBD.BringToFront()
+
                 BtnDetetor.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnDetetor.BringToFront()
+
                 BtnMapStudio.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnMapStudio.BringToFront()
+
                 BtnOptions.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnOptions.BringToFront()
+
                 BtnAbout.Visible = 1
                 Threading.Thread.Sleep(W)
+                BtnAbout.BringToFront()
+
                 PanelHomeTwo.Visible = 1
                 Threading.Thread.Sleep(W)
+                PanelHomeTwo.BringToFront()
+
+                SelectorPanel.Visible = 1
+                SelectorPanel.BringToFront()
+
                 'For i = -70 To 0
                 '    'BtnHome.Location = New Point(i, BtnHome.Location.Y)
                 '    BtnHome.Location = New Point(i, BtnHome.Location.Y)
@@ -427,6 +447,17 @@
     End Sub
 
     Private Sub BtnBD_Click(sender As Object, e As EventArgs) Handles BtnBD.Click
+        '---->
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
         SelectorPanel.Height = BtnBD.Height - 1
         SelectorPanel.Top = BtnBD.Top
         SelectorPanel.BringToFront()
@@ -456,5 +487,6 @@
         SelectorPanel.Height = BtnMapStudio.Height - 1
         SelectorPanel.Top = BtnMapStudio.Top
         SelectorPanel.BringToFront()
+        Mapstudio1.BringToFront()
     End Sub
 End Class

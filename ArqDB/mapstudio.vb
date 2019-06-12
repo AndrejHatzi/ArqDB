@@ -7,7 +7,7 @@
         Dim path As String = My.Application.Info.DirectoryPath
         Dim relpath As String
         'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\gem.cfg")
+        relpath = path.Replace("\ArqDB\bin\Debug", "\config\gem.cfg")
         If opf.ShowDialog = Windows.Forms.DialogResult.OK Then
 
             pBox.Image = Image.FromFile(opf.FileName)
@@ -21,7 +21,7 @@
         Dim path As String = My.Application.Info.DirectoryPath
         Dim relpath, colorMapPath, ImagePath As String
         'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\image.nm")
+        relpath = path.Replace("\ArqDB\bin\Debug", "\config\image.nm")
 
         Try
             My.Computer.FileSystem.DeleteFile(relpath)
@@ -35,12 +35,12 @@
         file.WriteLine(photopath)
         file.Close()
 
-        colorMapPath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\color_maps.exe")
-        ImagePath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\" & tBoxNome.Text & ".png")
+        colorMapPath = path.Replace("\ArqDB\bin\Debug", "\config\color_maps.exe")
+        ImagePath = path.Replace("\ArqDB\bin\Debug", "\config\" & tBoxNome.Text & ".png")
         'Dim proc As New System.Diagnostics.Process()
         'proc = Process.Start(colorMapPath, "")
         'wait(10000)
-        Process.Start("cmd", "/k cd F:\UI_ARQDB\config\ && color_maps.exe && exit()")
+        Process.Start("cmd", "/k cd F:\UI_ARQDB\ArqDB-master\config\ && color_maps.exe && exit()")
         wait(2000)
         pBox.Image = Image.FromFile(ImagePath)
     End Sub

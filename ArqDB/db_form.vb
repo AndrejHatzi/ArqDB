@@ -654,4 +654,8 @@ Public Class db_form
             con.Close()
         End Try
     End Sub
+
+    Private Sub BtnLocalizarTodos_Click(sender As Object, e As EventArgs) Handles BtnLocalizarTodos.Click
+        CreateMapMultipleLocations()
+    End Sub
 End Class

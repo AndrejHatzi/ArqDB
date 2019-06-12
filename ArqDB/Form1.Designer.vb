@@ -48,9 +48,9 @@ Partial Class Form1
         Me.BtnAboutSmall = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.BtnHomeSmall = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.SelectorPanel = New System.Windows.Forms.Panel()
+        Me.Mapstudio1 = New ArqDB.mapstudio()
         Me.Db_form1 = New ArqDB.db_form()
         Me.Options1 = New ArqDB.options()
-        Me.Mapstudio1 = New ArqDB.mapstudio()
         Me.header.SuspendLayout()
         CType(Me.BtnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnClose, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -609,10 +609,18 @@ Partial Class Form1
         Me.SelectorPanel.Size = New System.Drawing.Size(10, 59)
         Me.SelectorPanel.TabIndex = 18
         '
+        'Mapstudio1
+        '
+        Me.Mapstudio1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Mapstudio1.Location = New System.Drawing.Point(138, 94)
+        Me.Mapstudio1.Name = "Mapstudio1"
+        Me.Mapstudio1.Size = New System.Drawing.Size(695, 600)
+        Me.Mapstudio1.TabIndex = 20
+        '
         'Db_form1
         '
         Me.Db_form1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Db_form1.Location = New System.Drawing.Point(203, 94)
+        Me.Db_form1.Location = New System.Drawing.Point(133, 94)
         Me.Db_form1.Name = "Db_form1"
         Me.Db_form1.Size = New System.Drawing.Size(700, 600)
         Me.Db_form1.TabIndex = 19
@@ -620,18 +628,10 @@ Partial Class Form1
         'Options1
         '
         Me.Options1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Options1.Location = New System.Drawing.Point(200, 94)
+        Me.Options1.Location = New System.Drawing.Point(155, 94)
         Me.Options1.Name = "Options1"
-        Me.Options1.Size = New System.Drawing.Size(700, 594)
+        Me.Options1.Size = New System.Drawing.Size(547, 594)
         Me.Options1.TabIndex = 9
-        '
-        'Mapstudio1
-        '
-        Me.Mapstudio1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
-        Me.Mapstudio1.Location = New System.Drawing.Point(200, 96)
-        Me.Mapstudio1.Name = "Mapstudio1"
-        Me.Mapstudio1.Size = New System.Drawing.Size(697, 600)
-        Me.Mapstudio1.TabIndex = 20
         '
         'Form1
         '
