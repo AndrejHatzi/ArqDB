@@ -1,0 +1,85 @@
+﻿<head>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
+ <title>Teste</title>
+<script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+</script>
+<script src='https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js'></script>
+<script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js'></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css'/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'/>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css'/>
+<link rel='stylesheet' href='https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css'/>
+<style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+<style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+<meta name='viewport' content='width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
+<style>
+#map_8d82423173704cfe89ef80a2889ff409 {
+position: relative;
+width: 100.0%;
+height: 100.0%;
+left: 0.0%;
+top: 0.0%;
+}
+</style>
+</head>
+<body>
+<div class='folium-map' id='map_8d82423173704cfe89ef80a2889ff409' ></div>
+</body>
+<script>
+var map_8d82423173704cfe89ef80a2889ff409 = L.map(
+'map_8d82423173704cfe89ef80a2889ff409',
+{
+center: [52.2322, 21.0083],
+crs: L.CRS.EPSG3857,
+zoom: 4,
+zoomControl: true,
+preferCanvas: false,
+}
+);
+var tile_layer_73e75f2f86ae4aa2bf8edbf4e6fb96e8 = L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {'attribution': 'Data by \u0026copy; \u003ca href=\'http://openstreetmap.org\'\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\'http://www.openstreetmap.org/copyright\'\u003eODbL\u003c/a\u003e.', 'detectRetina': false, 'maxNativeZoom': 18, 'maxZoom': 18, 'minZoom': 0, 'noWrap': false, 'opacity': 1, 'subdomains': 'abc', 'tms': false}
+).addTo(map_8d82423173704cfe89ef80a2889ff409);
+var meu_marcador1 = L.marker(
+  [39.80948496,-7.23707031],
+{}
+).addTo(map_8d82423173704cfe89ef80a2889ff409);
+var meu_icon1 = L.AwesomeMarkers.icon(
+{'extraClasses': 'fa-rotate-0', 'icon': 'info-sign', 'iconColor': 'white', 'markerColor': 'red', 'prefix': 'glyphicon'}
+);
+meu_marcador1.setIcon(meu_icon1);
+meu_popup1 = L.popup({'maxWidth': '100%'});
+var meuhtml1 = $(`<div id='meuhtml1' style='width: 100.0%; height: 100.0%;'>Oliveiras</div>`)[0];
+meu_popup1.setContent(meuhtml1);
+meu_marcador1.bindPopup(meu_popup1);
+var meu_marcador2 = L.marker(
+  [39.80889237,-7.23534105],
+{}
+).addTo(map_8d82423173704cfe89ef80a2889ff409);
+var meu_icon2 = L.AwesomeMarkers.icon(
+{'extraClasses': 'fa-rotate-0', 'icon': 'info-sign', 'iconColor': 'white', 'markerColor': 'orange', 'prefix': 'glyphicon'}
+);
+meu_marcador2.setIcon(meu_icon2);
+meu_popup2 = L.popup({'maxWidth': '100%'});
+var meuhtml2 = $(`<div id='meuhtml2' style='width: 100.0%; height: 100.0%;'>Oliveiras - Quartzo leitoso</div>`)[0];
+meu_popup2.setContent(meuhtml2);
+meu_marcador2.bindPopup(meu_popup2);
+var meu_marcador3 = L.marker(
+  [39.80923461,-7.23704748],
+{}
+).addTo(map_8d82423173704cfe89ef80a2889ff409);
+var meu_icon3 = L.AwesomeMarkers.icon(
+{'extraClasses': 'fa-rotate-0', 'icon': 'info-sign', 'iconColor': 'white', 'markerColor': 'pink', 'prefix': 'glyphicon'}
+);
+meu_marcador3.setIcon(meu_icon3);
+meu_popup3 = L.popup({'maxWidth': '100%'});
+var meuhtml3 = $(`<div id='meuhtml3' style='width: 100.0%; height: 100.0%;'>Oliveiras - Silex</div>`)[0];
+meu_popup3.setContent(meuhtml3);
+meu_marcador3.bindPopup(meu_popup3);
+</script>
