@@ -44,7 +44,6 @@ F:\UI_ARQDB\ArqDB-master\ArqDB\obj\Debug\ArqDB.vbproj.GenerateResource.Cache
 F:\UI_ARQDB\ArqDB-master\ArqDB\obj\Debug\ArqDB.Form1.resources
 F:\UI_ARQDB\ArqDB-master\ArqDB\obj\Debug\ArqDB.db_form.resources
 F:\UI_ARQDB\ArqDB-master\ArqDB\obj\Debug\ArqDB.mapstudio.resources
-F:\UI_ARQDB\ArqDB-master\ArqDB\obj\Debug\ArqDB.vbprojResolveAssemblyReference.cache
 F:\NunoPiresProjeto\ArqDB-master\ArqDB\bin\Debug\ArqDB.exe.config
 F:\NunoPiresProjeto\ArqDB-master\ArqDB\obj\Debug\ArqDB.exe
 F:\NunoPiresProjeto\ArqDB-master\ArqDB\obj\Debug\ArqDB.xml
