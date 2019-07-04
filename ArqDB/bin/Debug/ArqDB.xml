@@ -15,6 +15,14 @@ ArqDB
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:ArqDB.My.Resources.Resources.oasis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:ArqDB.My.Resources.Resources.pyramide_render">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="T:ArqDB.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
