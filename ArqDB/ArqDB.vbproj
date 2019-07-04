@@ -86,6 +86,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="about.Designer.vb">
+      <DependentUpon>about.vb</DependentUpon>
+    </Compile>
+    <Compile Include="about.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="complete_list.Designer.vb">
       <DependentUpon>complete_list.vb</DependentUpon>
     </Compile>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="db_form.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="db_form_delete.Designer.vb">
+      <DependentUpon>db_form_delete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="db_form_delete.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="embLogin.Designer.vb">
       <DependentUpon>embLogin.vb</DependentUpon>
@@ -110,6 +122,12 @@
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="homepage.Designer.vb">
+      <DependentUpon>homepage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="homepage.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="io.vb" />
     <Compile Include="mapstudio.Designer.vb">
@@ -175,6 +193,12 @@
     <Compile Include="reg_vendas.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="start_object_identifier.Designer.vb">
+      <DependentUpon>start_object_identifier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="start_object_identifier.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="stdio.vb" />
     <Compile Include="utils.Designer.vb">
       <DependentUpon>utils.vb</DependentUpon>
@@ -184,17 +208,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="about.resx">
+      <DependentUpon>about.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="complete_list.resx">
       <DependentUpon>complete_list.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="db_form.resx">
       <DependentUpon>db_form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="db_form_delete.resx">
+      <DependentUpon>db_form_delete.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="embLogin.resx">
       <DependentUpon>embLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="homepage.resx">
+      <DependentUpon>homepage.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mapstudio.resx">
       <DependentUpon>mapstudio.vb</DependentUpon>
@@ -226,6 +259,9 @@
     <EmbeddedResource Include="reg_vendas.resx">
       <DependentUpon>reg_vendas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="start_object_identifier.resx">
+      <DependentUpon>start_object_identifier.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="utils.resx">
       <DependentUpon>utils.vb</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +280,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pyramide_render.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oasis.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

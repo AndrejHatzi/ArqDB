@@ -38,7 +38,6 @@ Partial Class db_form
         Me.labelcoordenadas = New System.Windows.Forms.Label()
         Me.DateDate = New Bunifu.Framework.UI.BunifuDatepicker()
         Me.LabelFreguesia = New System.Windows.Forms.Label()
-        Me.MateriaPrimaCombo = New Bunifu.Framework.UI.BunifuDropdown()
         Me.PeriodoCombo = New Bunifu.Framework.UI.BunifuDropdown()
         Me.DescricaoCombo = New Bunifu.Framework.UI.BunifuDropdown()
         Me.BtnSave = New Bunifu.Framework.UI.BunifuImageButton()
@@ -69,6 +68,8 @@ Partial Class db_form
         Me.ColourSelector = New System.Windows.Forms.Panel()
         Me.ImgIndicator = New System.Windows.Forms.Panel()
         Me.BtnLocalizarTodos = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.BtnList = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.MateriaPrimaCombo = New Bunifu.Framework.UI.BunifuDropdown()
         CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnDelete, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,6 +77,7 @@ Partial Class db_form
         CType(Me.ButtonSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnLocalizarTodos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Labelcodigo
@@ -246,21 +248,6 @@ Partial Class db_form
         Me.LabelFreguesia.TabIndex = 29
         Me.LabelFreguesia.Text = "Freguesia"
         '
-        'MateriaPrimaCombo
-        '
-        Me.MateriaPrimaCombo.BackColor = System.Drawing.Color.Transparent
-        Me.MateriaPrimaCombo.BorderRadius = 3
-        Me.MateriaPrimaCombo.DisabledColor = System.Drawing.Color.Gray
-        Me.MateriaPrimaCombo.ForeColor = System.Drawing.Color.White
-        Me.MateriaPrimaCombo.Items = New String() {"Quartzo", "Quartzo Hialino", "Quartzo Leitoso", "Quartzito", "Sílex", "Granito", "Xisto", "Calcário", "Obsidiana"}
-        Me.MateriaPrimaCombo.Location = New System.Drawing.Point(189, 197)
-        Me.MateriaPrimaCombo.Name = "MateriaPrimaCombo"
-        Me.MateriaPrimaCombo.NomalColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.MateriaPrimaCombo.onHoverColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(219, Byte), Integer))
-        Me.MateriaPrimaCombo.selectedIndex = -1
-        Me.MateriaPrimaCombo.Size = New System.Drawing.Size(185, 22)
-        Me.MateriaPrimaCombo.TabIndex = 33
-        '
         'PeriodoCombo
         '
         Me.PeriodoCombo.BackColor = System.Drawing.Color.Transparent
@@ -348,7 +335,7 @@ Partial Class db_form
         Me.ButtonSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.ButtonSettings.Image = CType(resources.GetObject("ButtonSettings.Image"), System.Drawing.Image)
         Me.ButtonSettings.ImageActive = Nothing
-        Me.ButtonSettings.Location = New System.Drawing.Point(848, 269)
+        Me.ButtonSettings.Location = New System.Drawing.Point(848, 322)
         Me.ButtonSettings.Name = "ButtonSettings"
         Me.ButtonSettings.Size = New System.Drawing.Size(44, 47)
         Me.ButtonSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -742,11 +729,41 @@ Partial Class db_form
         Me.BtnLocalizarTodos.TabStop = False
         Me.BtnLocalizarTodos.Zoom = 20
         '
+        'BtnList
+        '
+        Me.BtnList.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.BtnList.Image = CType(resources.GetObject("BtnList.Image"), System.Drawing.Image)
+        Me.BtnList.ImageActive = Nothing
+        Me.BtnList.Location = New System.Drawing.Point(848, 269)
+        Me.BtnList.Name = "BtnList"
+        Me.BtnList.Size = New System.Drawing.Size(44, 47)
+        Me.BtnList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.BtnList.TabIndex = 93
+        Me.BtnList.TabStop = False
+        Me.BtnList.Zoom = 20
+        '
+        'MateriaPrimaCombo
+        '
+        Me.MateriaPrimaCombo.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.MateriaPrimaCombo.BorderRadius = 3
+        Me.MateriaPrimaCombo.DisabledColor = System.Drawing.Color.Gray
+        Me.MateriaPrimaCombo.ForeColor = System.Drawing.Color.White
+        Me.MateriaPrimaCombo.Items = New String() {"Quartzo", "Quartzo Hialino", "Quartzo Leitoso", "Quartzito", "Sílex", "Granito", "Xisto", "Calcário", "Obsidiana"}
+        Me.MateriaPrimaCombo.Location = New System.Drawing.Point(188, 197)
+        Me.MateriaPrimaCombo.Name = "MateriaPrimaCombo"
+        Me.MateriaPrimaCombo.NomalColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.MateriaPrimaCombo.onHoverColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(219, Byte), Integer))
+        Me.MateriaPrimaCombo.selectedIndex = -1
+        Me.MateriaPrimaCombo.Size = New System.Drawing.Size(186, 22)
+        Me.MateriaPrimaCombo.TabIndex = 94
+        '
         'db_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Controls.Add(Me.MateriaPrimaCombo)
+        Me.Controls.Add(Me.BtnList)
         Me.Controls.Add(Me.BtnLocalizarTodos)
         Me.Controls.Add(Me.ColourSelector)
         Me.Controls.Add(Me.ColourRed)
@@ -776,7 +793,6 @@ Partial Class db_form
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.DescricaoCombo)
         Me.Controls.Add(Me.PeriodoCombo)
-        Me.Controls.Add(Me.MateriaPrimaCombo)
         Me.Controls.Add(Me.LabelFreguesia)
         Me.Controls.Add(Me.DateDate)
         Me.Controls.Add(Me.labelcoordenadas)
@@ -802,6 +818,7 @@ Partial Class db_form
         CType(Me.ButtonSettings, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnLocalizarTodos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -821,7 +838,6 @@ Partial Class db_form
     Friend WithEvents labelcoordenadas As System.Windows.Forms.Label
     Friend WithEvents DateDate As Bunifu.Framework.UI.BunifuDatepicker
     Friend WithEvents LabelFreguesia As System.Windows.Forms.Label
-    Friend WithEvents MateriaPrimaCombo As Bunifu.Framework.UI.BunifuDropdown
     Friend WithEvents PeriodoCombo As Bunifu.Framework.UI.BunifuDropdown
     Friend WithEvents DescricaoCombo As Bunifu.Framework.UI.BunifuDropdown
     Friend WithEvents BtnSave As Bunifu.Framework.UI.BunifuImageButton
@@ -852,5 +868,7 @@ Partial Class db_form
     Friend WithEvents ColourSelector As System.Windows.Forms.Panel
     Friend WithEvents ImgIndicator As System.Windows.Forms.Panel
     Friend WithEvents BtnLocalizarTodos As Bunifu.Framework.UI.BunifuImageButton
+    Friend WithEvents BtnList As Bunifu.Framework.UI.BunifuImageButton
+    Friend WithEvents MateriaPrimaCombo As Bunifu.Framework.UI.BunifuDropdown
 
 End Class

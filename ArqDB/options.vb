@@ -4,6 +4,7 @@
     Private Sub OptionPortuguese_Click(sender As Object, e As EventArgs) Handles OptionPortuguese.Click
         language = 0
         'Form1 - Main Buttons
+        Form1.Homepage1.WelcomeSentence.Text = "Bem-vindo ao ArqDB"
         Form1.BtnHome.Text = "Home"
         Form1.BtnBD.Text = "Base de Dados"
         Form1.BtnDetetor.Text = "Detetor de Minerais"
@@ -35,6 +36,10 @@
         Form1.Db_form1.labelLargura.Text = "Largura"
         Form1.Db_form1.labelEspessura.Text = "Espessura"
         Form1.Db_form1.labelcoordenadas.Text = "Coordenadas"
+        Form1.Db_form1.LblCorIcon.Text = "Cor do Icon"
+        Form1.Db_form1.Label1.Text = "Legenda"
+        db_form_delete.updatebutton.ButtonText = "Atualizar"
+        db_form_delete.deleteButton.ButtonText = "Eliminar"
         'Form1.Db_form1.labelbibliografia.Text = "Bibliografia"
         'db_form Materia Prima
         Form1.Db_form1.MateriaPrimaCombo.Clear()
@@ -118,6 +123,7 @@
     Private Sub OptionEnglish_Click(sender As Object, e As EventArgs) Handles OptionEnglish.Click
         language = 1
         'Form1 - Main Buttons
+        Form1.Homepage1.WelcomeSentence.Text = "Welcome to ArqDB"
         Form1.BtnHome.Text = "Home"
         Form1.BtnBD.Text = "Database"
         Form1.BtnDetetor.Text = "Minerals Detector"
@@ -149,6 +155,10 @@
         Form1.Db_form1.labelLargura.Text = "Width"
         Form1.Db_form1.labelEspessura.Text = "thickness"
         Form1.Db_form1.labelcoordenadas.Text = "Coordinates"
+        Form1.Db_form1.LblCorIcon.Text = "Icon Colour"
+        Form1.Db_form1.Label1.Text = "Label"
+        db_form_delete.updatebutton.ButtonText = "Update"
+        db_form_delete.deleteButton.ButtonText = "Delete"
         'Form1.Db_form1.labelbibliografia.Text = "Bibliography"
         'db_form Materia Prima
         Form1.Db_form1.MateriaPrimaCombo.Clear()
@@ -220,6 +230,7 @@
         'BtnOptionsSmall 599; 38
         'BtnAboutSmall 747; 38
         If MenuTopo.Checked Then
+
             Form1.Options1.Width = 900
             Form1.Options1.Height = 600 '512
             Form1.Options1.Location = New Point(0, 100) '38
@@ -230,32 +241,38 @@
 
             Form1.BtnHomeSmall.Visible = 1
             Form1.BtnHomeSmall.BringToFront()
+            Form1.BtnHomeSmall.IconZoom = 50
             Form1.BtnHome.SendToBack()
             Form1.BtnHome.Visible = 0
 
             Form1.BtnBDSmall.Visible = 1
             Form1.BtnBDSmall.BringToFront()
+            Form1.BtnBDSmall.IconZoom = 50
             Form1.BtnBD.SendToBack()
             Form1.BtnBD.Visible = 0
 
             Form1.BtnDetetorSmall.Visible = 1
             Form1.BtnDetetorSmall.BringToFront()
+            Form1.BtnDetetorSmall.IconZoom = 50
             Form1.BtnDetetor.SendToBack()
             Form1.BtnDetetor.Visible = 0
 
             Form1.BtnMapStudioSmall.Visible = 1
             Form1.BtnMapStudioSmall.BringToFront()
+            Form1.BtnMapStudioSmall.IconZoom = 50
             Form1.BtnMapStudio.SendToBack()
             Form1.BtnMapStudio.Visible = 0
 
 
             Form1.BtnOptionsSmall.Visible = 1
             Form1.BtnOptionsSmall.BringToFront()
+            Form1.BtnOptionsSmall.IconZoom = 50
             Form1.BtnOptions.SendToBack()
             Form1.BtnOptions.Visible = 0
 
             Form1.BtnAboutSmall.Visible = 1
             Form1.BtnAboutSmall.BringToFront()
+            Form1.BtnAboutSmall.IconZoom = 50
             Form1.BtnAbout.SendToBack()
             Form1.BtnAbout.Visible = 0
 
@@ -268,6 +285,9 @@
             Form1.PanelHomeExpanded.BringToFront()
 
             Form1.SelectorPanel.Visible = 0
+
+            Form1.Db_form1.SendToBack()
+            Form1.Mapstudio1.SendToBack()
             TopMenu = True
 
         End If

@@ -43,7 +43,7 @@ Module stdio
         Dim registos As MySqlDataReader
         Dim result As String
         conexao = New MySqlConnection
-        conexao.ConnectionString = "SERVER=localhost; user=root; password=''; database=loja_abc"
+        conexao.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
         Dim comando As MySqlCommand = New MySqlCommand(sql, conexao)
         Try
             conexao.Open()
@@ -55,6 +55,36 @@ Module stdio
                 End While
                 conexao.Close()
                 Return result
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Erro1")
+                Return "erro"
+
+            End Try
+        Catch ex As Exception
+            MessageBox.Show("Erro2", ex.Message)
+            Return "erro"
+        End Try
+    End Function
+    Public Function Existe_na_BD(sql As String, dname As String) As Integer
+        Dim conexao As New MySqlConnection()
+        Dim adaptador As New MySqlDataAdapter
+        Dim registos As MySqlDataReader
+        Dim result As String
+        Dim i As Integer
+        conexao = New MySqlConnection
+        conexao.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+        Dim comando As MySqlCommand = New MySqlCommand(sql, conexao)
+        Try
+            conexao.Open()
+            Try
+                registos = comando.ExecuteReader
+                While registos.Read
+                    'comboBox.Items.add(registos(CStr(dname)).ToString)
+                    result = registos(CStr(dname)).ToString
+                    i += 1
+                End While
+                conexao.Close()
+                Return i
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Erro1")
                 Return "erro"
@@ -366,20 +396,37 @@ Module stdio
 
         connection.Close()
     End Sub
-    Public Sub RetrieveImage(pbox As Object)
+    Public Sub RetrieveImage(pbox As Object, Sql As String)
         Dim cnn As SqlConnection
         Dim connectionString As String
-        connectionString = "SERVER=localhost; user=root; password=''; database=bd_exe"
+        connectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
         cnn = New SqlConnection(connectionString)
 
         Dim stream As New MemoryStream()
         cnn.Open()
-        Dim command As New SqlCommand("select img from imgtable where id=1", cnn)
+        Dim command As New SqlCommand(Sql, cnn)
         Dim image As Byte() = DirectCast(command.ExecuteScalar(), Byte())
         stream.Write(image, 0, image.Length)
         cnn.Close()
         Dim bitmap As New Bitmap(stream)
         pbox.Image = bitmap
+    End Sub
+
+    Public Sub RetrieveImageV3(pbox As Object, sql As String)
+        Dim conexao As New MySqlConnection()
+
+        conexao.ConnectionString = "SERVER=localhost; user=root; password='';database=arq_db"
+        Dim stream As New MemoryStream()
+        conexao.Open()
+
+        Dim comando As MySqlCommand = New MySqlCommand(sql, conexao)
+        Dim image As Byte() = DirectCast(comando.ExecuteScalar(), Byte())
+        stream.Write(image, 0, image.Length)
+        conexao.Close()
+        Dim bitmap As New Bitmap(stream)
+        pbox.Image = bitmap
+
+
     End Sub
 
     'Public Sub RetrieveImageV2()
@@ -449,6 +496,32 @@ Module stdio
         'MessageBox.Show(Message)
         Return 1
     End Function
+    Public Function UpdateItemsDatabase(pBox As Object, Code As Object, DateDate As String, TownHall As Object, Parish As Object, Place As Object, Epoch As Object, RawMaterial As Object, Description As Object, Base As Object, Technology As Object, Length As Object, Width As Object, Thickness As Object, Latitude As Object, Longitude As Object, Message As String) As Boolean
+        Dim con As New MySqlConnection()
+        Dim comando As New MySqlCommand
+        Dim dsql As String
+        Dim ms As New MemoryStream
+        pBox.Image.Save(ms, pBox.Image.RawFormat)
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude, Image
+            dsql = "UPDATE items SET Cod = " & Code.text & ", Date = '" & DateDate & "', TownHall = '" & TownHall.text & "', Parish = '" & Parish.text & "', Place = '" & Place.text & "',Epoch = '" & Epoch.selectedValue.ToString() & "', RawMaterial = '" & RawMaterial.selectedValue.ToString() & "', Description = '" & Description.selectedValue.ToString() & "',Base = '" & Base.text & "',Technology = '" & Technology.text & "',Length = " & Length.text & ", Width =" & Width.text & ",Thickness = " & Thickness.text & ", Latitude = " & Latitude.text & ", Longitude =" & Longitude.text & ",Image = @img WHERE Cod=" & Code.Text
+            MessageBox.Show(dsql)
+            Debug.Print(dsql)
+            comando.CommandText = dsql
+            comando.Parameters.Add("@img", MySqlDbType.Blob).Value = ms.ToArray()
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(Message & ex.Message, "Error")
+            Return 0
+        Finally
+            con.Close()
+        End Try
+        'MessageBox.Show(Message)
+        Return 1
+    End Function
     Public Function InsertMarkersDatabase(Code As Object, Latitude As Object, Longitude As Object, colour As String, label As Object, Message As String) As Boolean
         Dim con As New MySqlConnection()
         Dim dsql As String
@@ -470,6 +543,28 @@ Module stdio
         End Try
         Return 1
     End Function
+    Public Function UpdateMarkersDatabase(Code As Object, Latitude As Object, Longitude As Object, colour As String, label As Object, Message As String) As Boolean
+        Dim con As New MySqlConnection()
+        Dim dsql As String
+        Dim comando As New MySqlCommand
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            'Cod, Latitude, Longitude, Colour, Label
+            dsql = "UPDATE markers SET Cod=" & Code.text & ",Latitude=" & Latitude.text & ",Longitude=" & Longitude.text & ",Colour='" & colour & "',Label='" & label.text & "' WHERE Cod=" & Code.Text
+            comando.CommandText = dsql
+            MessageBox.Show(dsql)
+            Debug.Print(dsql)
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(Message & ex.Message, "Error")
+            Return 0
+        Finally
+            con.Close()
+        End Try
+        Return 1
+    End Function
     Public Sub wait(ByVal interval As Integer)
         Dim sw As New Stopwatch
         sw.Start()
@@ -478,6 +573,79 @@ Module stdio
             Application.DoEvents()
         Loop
         sw.Stop()
+    End Sub
+    Public Function AutomaticCodIndex(Cod As Object) As String
+        Dim conexao As New MySqlConnection()
+        Dim adaptador As New MySqlDataAdapter
+        Dim registos As MySqlDataReader
+        Dim Sql As String = "SELECT MAX(Cod) from items"
+        Dim result As String
+        conexao = New MySqlConnection
+        conexao.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+        Dim comando As MySqlCommand = New MySqlCommand(Sql, conexao)
+        Try
+            conexao.Open()
+            Try
+                registos = comando.ExecuteReader
+                While registos.Read
+                    result = registos(CStr("Cod")).ToString
+                End While
+                conexao.Close()
+                Return result
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Erro1")
+                Return "False"
+            End Try
+        Catch ex As Exception
+            MessageBox.Show("Erro2", ex.Message)
+            Return "False"
+        End Try
+    End Function
+
+    Public Sub DeleteItem(code As String, message As String)
+        Dim con As New MySqlConnection()
+        Dim dsql As String
+        Dim comando As New MySqlCommand
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            dsql = "Delete from items where Cod=" & code
+            comando.CommandText = dsql
+            MessageBox.Show(dsql)
+            Debug.Print(dsql)
+            If MessageBox.Show(message, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.No Then
+                Exit Sub
+            Else
+                comando.ExecuteNonQuery()
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+        Finally
+            con.Close()
+        End Try
+
+
+    End Sub
+    Public Sub DeleteMarker(code As String)
+        Dim con As New MySqlConnection()
+        Dim dsql As String
+        Dim comando As New MySqlCommand
+        Try
+            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+            con.Open()
+            comando.Connection = con
+            dsql = "Delete from markers where Cod=" & code
+            comando.CommandText = dsql
+            'MessageBox.Show(dsql)
+            Debug.Print(dsql)
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error")
+        Finally
+            con.Close()
+        End Try
     End Sub
 
 

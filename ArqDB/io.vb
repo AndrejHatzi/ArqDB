@@ -122,11 +122,7 @@ Module io
         Dim relpath As String
         'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
         relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\ArqDB-master\config\Maps.html")
-        Try
-            My.Computer.FileSystem.DeleteFile(relpath)
-        Catch ex As Exception
-            MessageBox.Show(ex.ToString)
-        End Try
+        My.Computer.FileSystem.DeleteFile(relpath)
 
         file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
         file.WriteLine("<head>")
@@ -186,11 +182,12 @@ Module io
             Try
                 registos = comando.ExecuteReader
                 While registos.Read
+                    'MessageBox.Show(registos("Latitude").ToString() & registos("Longitude").ToString() & registos("Colour").ToString() & registos("Label").ToString())
                     'comboBox.Items.add(registos(CStr(dname)).ToString)
                     'MessageBox.Show(registos("Latitude").ToString() & registos("Longitude").ToString() & registos("Colour").ToString() & registos("Label").ToString())
                     i += 1
                     file.WriteLine("var meu_marcador" & i & " = L.marker(")
-                    file.WriteLine("  [" & registos("Latitude").ToString() & "," & registos("Longitude").ToString() & "],")
+                    file.WriteLine("  [" & registos("Latitude").ToString().Replace(",", ".") & "," & registos("Longitude").ToString().Replace(",", ".") & "],")
                     file.WriteLine("{}")
                     file.WriteLine(").addTo(map_8d82423173704cfe89ef80a2889ff409);")
                     file.WriteLine("var meu_icon" & i & " = L.AwesomeMarkers.icon(")
@@ -202,7 +199,7 @@ Module io
                     file.WriteLine("meu_popup" & i & ".setContent(meuhtml" & i & ");")
                     file.WriteLine("meu_marcador" & i & ".bindPopup(meu_popup" & i & ");")
                 End While
-                MessageBox.Show(i)
+                'MessageBox.Show(i)
                 conexao.Close()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Erro1")

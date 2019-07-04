@@ -94,7 +94,23 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Options1.language = 0
-        Db_form1.BringToFront()
+        Homepage1.BringToFront()
+
+        Homepage1.Visible = 1
+        Homepage1.Location = New Point(0, 45)
+        Homepage1.Width = 900
+        Homepage1.Height = 600
+
+        Db_form1.Visible = 0
+        Mapstudio1.Visible = 0
+        Options1.Visible = 0
+        Start_object_identifier1.Visible = 0
+        About1.Visible = 0
+        'Db_form1.BringToFront()
+        
+
+
+
         'Db_form1.CorIconComboBox.Clear()
         'Db_form1.CorIconComboBox.AddItem("Verde Claro")
         'Db_form1.CorIconComboBox.AddItem("Verde Escuro")
@@ -194,6 +210,10 @@
         Db_form1.Width = 900
         Db_form1.Height = 600
 
+        Start_object_identifier1.Location = New Point(0, 45)
+        Start_object_identifier1.Width = 900
+        Start_object_identifier1.Height = 600
+
         '895, 600
 
         SelectorPanel.Height = BtnHome.Height - 1
@@ -233,6 +253,14 @@
             Mapstudio1.Location = New Point(0, 100)
             Mapstudio1.Width = 900
             Mapstudio1.Height = 600
+
+            Homepage1.Location = New Point(0, 100)
+            Homepage1.Width = 900
+            Homepage1.Height = 600
+
+            Start_object_identifier1.Location = New Point(0, 100)
+            Start_object_identifier1.Width = 900
+            Start_object_identifier1.Height = 600
 
             If activateSmall = False Then
 
@@ -322,6 +350,14 @@
                 Mapstudio1.Width = 900
                 Mapstudio1.Height = 600
 
+                Homepage1.Location = New Point(0, 45)
+                Homepage1.Width = 900
+                Homepage1.Height = 600
+
+                Start_object_identifier1.Location = New Point(0, 45)
+                Start_object_identifier1.Width = 900
+                Start_object_identifier1.Height = 600
+
 
 
             Else
@@ -340,7 +376,13 @@
                 Mapstudio1.Width = 900
                 Mapstudio1.Height = 600
 
-                
+                Homepage1.Location = New Point(0, 45)
+                Homepage1.Width = 900
+                Homepage1.Height = 600
+
+                Start_object_identifier1.Location = New Point(0, 45)
+                Start_object_identifier1.Width = 900
+                Start_object_identifier1.Height = 600
 
                 BtnHome.Visible = 1
                 Threading.Thread.Sleep(W)
@@ -434,19 +476,50 @@
         SelectorPanel.Top = BtnOptions.Top
         SelectorPanel.BringToFront()
 
-        Db_form1.SendToBack()
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
+        Db_form1.Visible = 0
+        Mapstudio1.Visible = 0
+        Homepage1.Visible = 0
+        Options1.Visible = 1
         Options1.BringToFront()
     End Sub
 
     Private Sub BtnHome_Click(sender As Object, e As EventArgs) Handles BtnHome.Click
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
         SelectorPanel.Height = BtnHome.Height - 1
         SelectorPanel.Top = BtnHome.Top
         SelectorPanel.BringToFront()
 
-       
+        Db_form1.Visible = 0
+        Mapstudio1.Visible = 0
+        Homepage1.Visible = 1
+        Options1.Visible = 0
+        Homepage1.BringToFront()
+
+
     End Sub
 
     Private Sub BtnBD_Click(sender As Object, e As EventArgs) Handles BtnBD.Click
+        Db_form1.Visible = 1
+
         '---->
         PanelHomeTwo.Visible = 0
         BtnAbout.Visible = 0
@@ -468,25 +541,213 @@
 
 
     Private Sub BtnAbout_Click(sender As Object, e As EventArgs) Handles BtnAbout.Click
-        CreateOptions("language = PT", "menu = 1")
+        'CreateOptions("language = PT", "menu = 1")
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
+        Homepage1.Visible = 0
+
+        About1.Visible = 1
+        SelectorPanel.Height = BtnAbout.Height - 1
+        SelectorPanel.Top = BtnAbout.Top
+        SelectorPanel.BringToFront()
+        About1.BringToFront()
     End Sub
 
     Private Sub BtnBDSmall_Click(sender As Object, e As EventArgs) Handles BtnBDSmall.Click
+        BtnHomeSmall.IconZoom = 50
         Db_form1.Visible = True
         Db_form1.BringToFront()
+        Db_form1.Visible = 1
+        Db_form1.Location = New Point(0, 100)
+
+        Start_object_identifier1.Visible = False
+        Start_object_identifier1.SendToBack()
+
+        Mapstudio1.Visible = False
+        Mapstudio1.SendToBack()
+
+        Options1.Visible = False
         Options1.SendToBack()
+
+        About1.Visible = False
+        About1.SendToBack()
+
+
     End Sub
 
     Private Sub BtnOptionsSmall_Click(sender As Object, e As EventArgs) Handles BtnOptionsSmall.Click
-        Options1.BringToFront()
+        BtnHomeSmall.IconZoom = 50
+        Homepage1.Visible = False
+        Homepage1.SendToBack()
+
         Db_form1.Visible = False
         Db_form1.SendToBack()
+
+        Start_object_identifier1.Visible = False
+        Start_object_identifier1.SendToBack()
+
+        Mapstudio1.Visible = False
+        Mapstudio1.SendToBack()
+
+        Options1.Visible = True
+        Options1.BringToFront()
+        Options1.Location = New Point(0, 100)
+
+        About1.Visible = False
+        About1.SendToBack()
     End Sub
 
     Private Sub BtnMapStudio_Click(sender As Object, e As EventArgs) Handles BtnMapStudio.Click
+
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
+        Mapstudio1.Visible = 1
         SelectorPanel.Height = BtnMapStudio.Height - 1
         SelectorPanel.Top = BtnMapStudio.Top
         SelectorPanel.BringToFront()
         Mapstudio1.BringToFront()
+    End Sub
+
+    Private Sub Mapstudio1_Load(sender As Object, e As EventArgs) Handles Mapstudio1.Load
+
+    End Sub
+
+    Private Sub Homepage1_Load(sender As Object, e As EventArgs) Handles Homepage1.Load
+
+    End Sub
+
+    Private Sub BtnDetetor_Click(sender As Object, e As EventArgs) Handles BtnDetetor.Click
+        PanelHomeTwo.Visible = 0
+        BtnAbout.Visible = 0
+        BtnOptions.Visible = 0
+        BtnMapStudio.Visible = 0
+        BtnDetetor.Visible = 0
+        BtnBD.Visible = 0
+        PanelHomeOne.Visible = 0
+        BtnHome.Visible = 0
+        SelectorPanel.Visible = 0
+
+        Start_object_identifier1.Visible = 1
+        SelectorPanel.Height = BtnDetetor.Height - 1
+        SelectorPanel.Top = BtnDetetor.Top
+        SelectorPanel.BringToFront()
+        Start_object_identifier1.BringToFront()
+    End Sub
+
+    Private Sub BtnHomeSmall_Click(sender As Object, e As EventArgs) Handles BtnHomeSmall.Click
+        BtnHomeSmall.IconZoom = 50
+        Homepage1.Visible = True
+        Homepage1.BringToFront()
+        Homepage1.Location = New Point(0, 100)
+
+        Db_form1.Visible = False
+        Db_form1.SendToBack()
+        Db_form1.Visible = 0
+
+        Start_object_identifier1.Visible = False
+        Start_object_identifier1.SendToBack()
+        Start_object_identifier1.Visible = 0
+
+        Mapstudio1.Visible = False
+        Mapstudio1.SendToBack()
+        Mapstudio1.Visible = 0
+
+        Options1.Visible = False
+        Options1.SendToBack()
+        Options1.Visible = 0
+
+        About1.Visible = False
+        About1.SendToBack()
+        About1.Visible = 0
+    End Sub
+
+    Private Sub BtnDetetorSmall_Click(sender As Object, e As EventArgs) Handles BtnDetetorSmall.Click
+        BtnHomeSmall.IconZoom = 50
+        Homepage1.Visible = False
+        Homepage1.SendToBack()
+
+        Db_form1.Visible = False
+        Db_form1.SendToBack()
+
+        Start_object_identifier1.Visible = True
+        Start_object_identifier1.SendToBack()
+        Start_object_identifier1.Location = New Point(0, 100)
+
+        Mapstudio1.Visible = False
+        Mapstudio1.SendToBack()
+
+        Options1.Visible = False
+        Options1.SendToBack()
+
+        About1.Visible = False
+        About1.SendToBack()
+    End Sub
+
+    Private Sub BtnMapStudioSmall_Click(sender As Object, e As EventArgs) Handles BtnMapStudioSmall.Click
+        BtnHomeSmall.IconZoom = 50
+        Homepage1.Visible = False
+        Homepage1.SendToBack()
+
+        Db_form1.Visible = False
+        Db_form1.SendToBack()
+
+        Start_object_identifier1.Visible = False
+        Start_object_identifier1.SendToBack()
+
+        Mapstudio1.Visible = True
+        Mapstudio1.BringToFront()
+        Mapstudio1.Location = New Point(0, 100)
+
+        Options1.Visible = False
+        Options1.SendToBack()
+
+        About1.Visible = False
+        About1.SendToBack()
+    End Sub
+
+    Private Sub BtnAboutSmall_Click(sender As Object, e As EventArgs) Handles BtnAboutSmall.Click
+        BtnHomeSmall.IconZoom = 50
+        Homepage1.Visible = False
+        Homepage1.SendToBack()
+
+        Db_form1.Visible = False
+        Db_form1.SendToBack()
+
+        Start_object_identifier1.Visible = False
+        Start_object_identifier1.SendToBack()
+
+        Mapstudio1.Visible = False
+        Mapstudio1.SendToBack()
+
+        Options1.Visible = False
+        Options1.SendToBack()
+
+        About1.Visible = True
+        About1.BringToFront()
+        About1.Location = New Point(0, 100)
+    End Sub
+
+    Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
+        Me.Close()
+    End Sub
+
+    Private Sub BtnMinimize_Click(sender As Object, e As EventArgs) Handles BtnMinimize.Click
+        Me.WindowState = FormWindowState.Minimized
     End Sub
 End Class

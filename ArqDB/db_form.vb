@@ -10,6 +10,10 @@ Public Class db_form
         ColourSelector.Visible = 0
         ImgIndicator.Visible = 0
 
+        'Dim result As String
+        'result = AutomaticCodIndex(tBoxCodigo)
+        'tBoxCodigo.Text = result
+
         'Dim path As String = My.Application.Info.DirectoryPath
         'Dim relpath, primeira_linha As String
         'Dim fileReader As System.IO.StreamReader
@@ -133,93 +137,19 @@ Public Class db_form
     End Sub
 
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles BtnUpdate.Click
-        'Dim Components() As Object = {tBoxCodigo, tBoxConcelho, tBoxFreguesia, tBoxLugar, tBoxSuporte, 
-        'tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, BibliografiaTextBox}
-        'MessageBox.Show(UBound(Components))
-        'tBoxCodigo.ForeColor = Color.Red
-        'For i = 0 To UBound(Components)
-        '    If Components(i).Text.Length = 0 Then
-        '        Components(i).HintForeColor = Color.Red
-        '        Components(i).Text = "Error"
-        '    End If
-        'Next
-        Dim Message As String
+        Dim connection As New MySqlConnection()
+        Dim table As New DataTable()
+        connection.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+        Dim sql As String
         If Form1.Options1.language = 0 Then
-            Message = "Não Preenchido"
-        ElseIf Form1.Options1.language = 1 Then
-            Message = "Not Filled"
+            sql = "SELECT Cod as 'Codigo', Date as 'Data', TownHall as 'Concelho', Parish as 'Freguesia', Place as 'Lugar', Epoch as 'Periodo', RawMaterial as 'Materia Prima', Description as 'Descricao', Base as 'Suporte', Technology as 'Tecnologia', Length as 'Comprimento', Width as 'Largura', Thickness as 'Espessura', Latitude, Longitude from items"
+        Else
+            sql = "SELECT Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude from items"
         End If
-
-        MessageBox.Show(Form1.Options1.language)
-        If tBoxCodigo.Text.Length = 0 Then
-            tBoxCodigo.Text = Message
-            tBoxCodigo.HintForeColor = Color.Red
-            tBoxCodigo.ForeColor = Color.Red
-        End If
-        If tBoxConcelho.Text.Length = 0 Then
-
-            tBoxConcelho.Text = Message
-            tBoxConcelho.HintForeColor = Color.Red
-            tBoxConcelho.ForeColor = Color.Red
-        End If
-        If tBoxFreguesia.Text.Length = 0 Then
-
-            tBoxFreguesia.Text = Message
-            tBoxFreguesia.HintForeColor = Color.Red
-            tBoxFreguesia.ForeColor = Color.Red
-        End If
-        If tBoxLugar.Text.Length = 0 Then
-
-            tBoxLugar.Text = Message
-            tBoxLugar.HintForeColor = Color.Red
-            tBoxLugar.ForeColor = Color.Red
-        End If
-        If tBoxSuporte.Text.Length = 0 Then
-
-            tBoxSuporte.Text = Message
-            tBoxSuporte.HintForeColor = Color.Red
-            tBoxSuporte.ForeColor = Color.Red
-        End If
-        If tBoxTecnologia.Text.Length = 0 Then
-
-            tBoxTecnologia.Text = Message
-            tBoxTecnologia.HintForeColor = Color.Red
-            tBoxTecnologia.ForeColor = Color.Red
-        End If
-        If tBoxComprimento.Text.Length = 0 Then
-
-            tBoxComprimento.Text = Message
-            tBoxComprimento.HintForeColor = Color.Red
-            tBoxComprimento.ForeColor = Color.Red
-        End If
-        If tBoxLargura.Text.Length = 0 Then
-
-            tBoxLargura.Text = Message
-            tBoxLargura.HintForeColor = Color.Red
-            tBoxLargura.ForeColor = Color.Red
-        End If
-        If tBoxEspessura.Text.Length = 0 Then
-
-            tBoxEspessura.Text = Message
-            tBoxEspessura.HintForeColor = Color.Red
-            tBoxEspessura.ForeColor = Color.Red
-        End If
-        If tBoxLatitude.Text.Length = 0 Then
-
-            tBoxLatitude.Text = "Latitude"
-            tBoxLatitude.HintForeColor = Color.Red
-            tBoxLatitude.ForeColor = Color.Red
-        End If
-        If tBoxLongitude.Text.Length = 0 Then
-
-            tBoxLongitude.Text = "Longitude"
-            tBoxLongitude.HintForeColor = Color.Red
-            tBoxLongitude.ForeColor = Color.Red
-        End If
-        'If BibliografiaTextBox.Text.Length = 0 Then
-        '    BibliografiaTextBox.ForeColor = Color.Red
-        '    BibliografiaTextBox.Text = Message
-        'End If
+        Dim adapter As New MySqlDataAdapter(sql, connection)
+        adapter.Fill(table)
+        db_form_delete.DataItems.DataSource = table
+        db_form_delete.Show()
     End Sub
     'tBoxCodigo, tBoxConcelho, tBoxFreguesia, tBoxLugar, tBoxSuporte, 
     'tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, BibliografiaTextBox
@@ -238,31 +168,27 @@ Public Class db_form
                 tBoxCodigo.Text = ""
             End If
         End If
-
-        'If tBoxCodigo.Text.Length  Then
-        'tBoxCodigo.Text = ""
-        'End If
     End Sub
 
-    Private Sub tBoxCodigo_LostFocus(sender As Object, e As EventArgs) Handles tBoxCodigo.LostFocus
-        Dim fileReader As System.IO.StreamReader
-        Dim primeira_linha As String
-        Dim path As String = My.Application.Info.DirectoryPath
-        Dim relpath As String
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
-        fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
-        primeira_linha = fileReader.ReadLine()
-        If Form1.Options1.language = 0 Then
-            If tBoxCodigo.Text = "" Then
-                tBoxCodigo.Text = "Ultimo Código foi " & primeira_linha
-            End If
-        Else
-            If tBoxCodigo.Text = "" Then
-                tBoxCodigo.Text = "Last written code was " & primeira_linha
-            End If
-        End If
+    'Private Sub tBoxCodigo_LostFocus(sender As Object, e As EventArgs) Handles tBoxCodigo.LostFocus
+    '    Dim fileReader As System.IO.StreamReader
+    '    Dim primeira_linha As String
+    '    Dim path As String = My.Application.Info.DirectoryPath
+    '    Dim relpath As String
+    '    relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
+    '    fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
+    '    primeira_linha = fileReader.ReadLine()
+    '    If Form1.Options1.language = 0 Then
+    '        If tBoxCodigo.Text = "" Then
+    '            tBoxCodigo.Text = "Ultimo Código foi " & primeira_linha
+    '        End If
+    '    Else
+    '        If tBoxCodigo.Text = "" Then
+    '            tBoxCodigo.Text = "Last written code was " & primeira_linha
+    '        End If
+    '    End If
 
-    End Sub
+    'End Sub
     Private Sub tBoxCodigo_OnValueChanged(sender As Object, e As EventArgs) Handles tBoxCodigo.OnValueChanged
         tBoxCodigo.HintForeColor = Color.White
         tBoxCodigo.ForeColor = Color.White
@@ -371,145 +297,221 @@ Public Class db_form
 
     Private Sub BtnSave_Click_1(sender As Object, e As EventArgs) Handles BtnSave.Click
         Dim sqrColour
-        'Dim file As System.IO.StreamWriter
-        'Dim path As String = My.Application.Info.DirectoryPath
-        'Dim relpath As String
-        ''F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastitem.item")
-        'Try
-        '    My.Computer.FileSystem.DeleteFile(relpath)
-        'Catch ex As Exception
-        '    MessageBox.Show(ex.ToString)
-        'End Try
 
-        'file = My.Computer.FileSystem.OpenTextFileWriter(relpath, True)
-        'file.WriteLine(tBoxCodigo.Text)
-        'file.Close()
-        ', Message As String
-        'Message = "Escolha uma cor para o Icone"
-        'DescricaoCombo.selectedValue.ToString()
-        'Dim objStreamWriter As StreamWriter
-        'Dim path As String = My.Application.Info.DirectoryPath
-        'Dim relpath As String
-        'F:\UI_ARQDB\ArqDB-master\ArqDB\bin\Debug
-        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\gem.cfg")
-        'Debug.Print(path)
-        'MessageBox.Show(path)
-        'MessageBox.Show(relpath)
-        'MessageBox.Show(path.Replace)
-        'objStreamWriter = New StreamWriter(relpath)
-        'objStreamWriter.WriteLine(tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text)
-        'objStreamWriter.WriteLine("From the StreamWriter class")
-        'objStreamWriter.Close()
-        'InsertItem(pBox, tBoxCodigo, DateDate, tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, MateriaPrimaCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, tBoxBibliografia, "Sucesso")
-        'My.Computer.FileSystem.WriteAllText(relpath, tBoxCodigo.Text & "," & tBoxLongitude.Text & "," & tBoxLatitude.Text, True)
-        'InsertItems(pBox.Image, tBoxCodigo, tBoxFreguesia)
-        'InsertItemsV2(pBox, tBoxCodigo, tBoxFreguesia)
+        If Existe_na_BD("SELECT Cod from items where Cod=" & tBoxCodigo.Text, "Cod") > 0 Then
 
-        
+            Dim Message As String
+            If Form1.Options1.language = 0 Then
+                Message = "Não Preenchido"
+            ElseIf Form1.Options1.language = 1 Then
+                Message = "Not Filled"
+            End If
 
+            'MessageBox.Show(Form1.Options1.language)
+            If tBoxCodigo.Text.Length = 0 Then
+                tBoxCodigo.Text = Message
+                tBoxCodigo.HintForeColor = Color.Red
+                tBoxCodigo.ForeColor = Color.Red
+            End If
+            If tBoxConcelho.Text.Length = 0 Then
 
-        Dim Message As String
-        If Form1.Options1.language = 0 Then
-            Message = "Não Preenchido"
-        ElseIf Form1.Options1.language = 1 Then
-            Message = "Not Filled"
-        End If
+                tBoxConcelho.Text = Message
+                tBoxConcelho.HintForeColor = Color.Red
+                tBoxConcelho.ForeColor = Color.Red
+            End If
+            If tBoxFreguesia.Text.Length = 0 Then
 
-        MessageBox.Show(Form1.Options1.language)
-        If tBoxCodigo.Text.Length = 0 Then
-            tBoxCodigo.Text = Message
-            tBoxCodigo.HintForeColor = Color.Red
-            tBoxCodigo.ForeColor = Color.Red
-        End If
-        If tBoxConcelho.Text.Length = 0 Then
+                tBoxFreguesia.Text = Message
+                tBoxFreguesia.HintForeColor = Color.Red
+                tBoxFreguesia.ForeColor = Color.Red
+            End If
+            If tBoxLugar.Text.Length = 0 Then
 
-            tBoxConcelho.Text = Message
-            tBoxConcelho.HintForeColor = Color.Red
-            tBoxConcelho.ForeColor = Color.Red
-        End If
-        If tBoxFreguesia.Text.Length = 0 Then
+                tBoxLugar.Text = Message
+                tBoxLugar.HintForeColor = Color.Red
+                tBoxLugar.ForeColor = Color.Red
+            End If
+            If tBoxSuporte.Text.Length = 0 Then
 
-            tBoxFreguesia.Text = Message
-            tBoxFreguesia.HintForeColor = Color.Red
-            tBoxFreguesia.ForeColor = Color.Red
-        End If
-        If tBoxLugar.Text.Length = 0 Then
+                tBoxSuporte.Text = Message
+                tBoxSuporte.HintForeColor = Color.Red
+                tBoxSuporte.ForeColor = Color.Red
+            End If
+            If tBoxTecnologia.Text.Length = 0 Then
 
-            tBoxLugar.Text = Message
-            tBoxLugar.HintForeColor = Color.Red
-            tBoxLugar.ForeColor = Color.Red
-        End If
-        If tBoxSuporte.Text.Length = 0 Then
+                tBoxTecnologia.Text = Message
+                tBoxTecnologia.HintForeColor = Color.Red
+                tBoxTecnologia.ForeColor = Color.Red
+            End If
+            If tBoxComprimento.Text.Length = 0 Then
 
-            tBoxSuporte.Text = Message
-            tBoxSuporte.HintForeColor = Color.Red
-            tBoxSuporte.ForeColor = Color.Red
-        End If
-        If tBoxTecnologia.Text.Length = 0 Then
+                tBoxComprimento.Text = Message
+                tBoxComprimento.HintForeColor = Color.Red
+                tBoxComprimento.ForeColor = Color.Red
+            End If
+            If tBoxLargura.Text.Length = 0 Then
 
-            tBoxTecnologia.Text = Message
-            tBoxTecnologia.HintForeColor = Color.Red
-            tBoxTecnologia.ForeColor = Color.Red
-        End If
-        If tBoxComprimento.Text.Length = 0 Then
+                tBoxLargura.Text = Message
+                tBoxLargura.HintForeColor = Color.Red
+                tBoxLargura.ForeColor = Color.Red
+            End If
+            If tBoxEspessura.Text.Length = 0 Then
 
-            tBoxComprimento.Text = Message
-            tBoxComprimento.HintForeColor = Color.Red
-            tBoxComprimento.ForeColor = Color.Red
-        End If
-        If tBoxLargura.Text.Length = 0 Then
+                tBoxEspessura.Text = Message
+                tBoxEspessura.HintForeColor = Color.Red
+                tBoxEspessura.ForeColor = Color.Red
+            End If
+            If tBoxLatitude.Text.Length = 0 Then
 
-            tBoxLargura.Text = Message
-            tBoxLargura.HintForeColor = Color.Red
-            tBoxLargura.ForeColor = Color.Red
-        End If
-        If tBoxEspessura.Text.Length = 0 Then
+                tBoxLatitude.Text = Message
+                tBoxLatitude.HintForeColor = Color.Red
+                tBoxLatitude.ForeColor = Color.Red
+            End If
+            If tBoxLongitude.Text.Length = 0 Then
+                tBoxLongitude.Text = Message
+                tBoxLongitude.HintForeColor = Color.Red
+                tBoxLongitude.ForeColor = Color.Red
+            End If
+            If tBoxLegenda.Text.Length = 0 Then
+                tBoxLegenda.Text = Message
+                tBoxLegenda.HintForeColor = Color.Red
+                tBoxLegenda.ForeColor = Color.Red
+            End If
+            If pBox.Image Is Nothing Then
+                ImgIndicator.Visible = 1
+            End If
 
-            tBoxEspessura.Text = Message
-            tBoxEspessura.HintForeColor = Color.Red
-            tBoxEspessura.ForeColor = Color.Red
-        End If
-        If tBoxLatitude.Text.Length = 0 Then
-
-            tBoxLatitude.Text = Message
-            tBoxLatitude.HintForeColor = Color.Red
-            tBoxLatitude.ForeColor = Color.Red
-        End If
-        If tBoxLongitude.Text.Length = 0 Then
-            tBoxLongitude.Text = Message
-            tBoxLongitude.HintForeColor = Color.Red
-            tBoxLongitude.ForeColor = Color.Red
-        End If
-        If tBoxLegenda.Text.Length = 0 Then
-            tBoxLegenda.Text = Message
-            tBoxLegenda.HintForeColor = Color.Red
-            tBoxLegenda.ForeColor = Color.Red
-        End If
-        If pBox.Image Is Nothing Then
-            ImgIndicator.Visible = 1
-        End If
-
-        If (tBoxCodigo.Text <> "" And tBoxConcelho.Text <> "" And tBoxFreguesia.Text <> "" And tBoxLugar.Text <> "" And tBoxSuporte.Text <> "" And tBoxTecnologia.Text <> "" And tBoxComprimento.Text <> "" And tBoxLargura.Text <> "" And tBoxEspessura.Text <> "" And tBoxLatitude.Text <> "" And tBoxLongitude.Text <> "") Then
-            If (PeriodoCombo.selectedIndex <> -1 And MateriaPrimaCombo.selectedIndex <> -1 And DescricaoCombo.selectedIndex <> -1 And pBox.Image Is Nothing = False) Then
-                InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
-                If ColourSelector.Location.X = ColourBlue.Location.X Then
-                    sqrColour = "cadetblue"
-                ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
-                    sqrColour = "orange"
-                ElseIf ColourSelector.Location.X = ColourRed.Location.X Then
-                    sqrColour = "red"
-                ElseIf ColourSelector.Location.X = ColourPurple.Location.X Then
-                    sqrColour = "purple"
-                ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
-                    sqrColour = "pink"
+            If (tBoxCodigo.Text <> "" And tBoxConcelho.Text <> "" And tBoxFreguesia.Text <> "" And tBoxLugar.Text <> "" And tBoxSuporte.Text <> "" And tBoxTecnologia.Text <> "" And tBoxComprimento.Text <> "" And tBoxLargura.Text <> "" And tBoxEspessura.Text <> "" And tBoxLatitude.Text <> "" And tBoxLongitude.Text <> "") Then
+                If (PeriodoCombo.selectedIndex <> -1 And MateriaPrimaCombo.selectedIndex <> -1 And DescricaoCombo.selectedIndex <> -1 And pBox.Image Is Nothing = False) Then
+                    UpdateItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
+                    If ColourSelector.Location.X = ColourBlue.Location.X Then
+                        sqrColour = "cadetblue"
+                    ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
+                        sqrColour = "orange"
+                    ElseIf ColourSelector.Location.X = ColourRed.Location.X Then
+                        sqrColour = "red"
+                    ElseIf ColourSelector.Location.X = ColourPurple.Location.X Then
+                        sqrColour = "purple"
+                    ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
+                        sqrColour = "pink"
+                    End If
+                    If sqrColour <> "" Then
+                        UpdateMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, "Generico")
+                    End If
                 End If
-                If sqrColour <> "" Then
-                    InsertMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, "Generico")
+                If Form1.Options1.language = 0 Then
+                    MessageBox.Show("Peça Atualizada com Sucesso")
+                ElseIf Form1.Options1.language = 1 Then
+                    MessageBox.Show("Item Updated")
+                End If
+            End If
+        Else
+            Dim Message As String
+            If Form1.Options1.language = 0 Then
+                Message = "Não Preenchido"
+            ElseIf Form1.Options1.language = 1 Then
+                Message = "Not Filled"
+            End If
+
+            MessageBox.Show(Form1.Options1.language)
+            If tBoxCodigo.Text.Length = 0 Then
+                tBoxCodigo.Text = Message
+                tBoxCodigo.HintForeColor = Color.Red
+                tBoxCodigo.ForeColor = Color.Red
+            End If
+            If tBoxConcelho.Text.Length = 0 Then
+
+                tBoxConcelho.Text = Message
+                tBoxConcelho.HintForeColor = Color.Red
+                tBoxConcelho.ForeColor = Color.Red
+            End If
+            If tBoxFreguesia.Text.Length = 0 Then
+
+                tBoxFreguesia.Text = Message
+                tBoxFreguesia.HintForeColor = Color.Red
+                tBoxFreguesia.ForeColor = Color.Red
+            End If
+            If tBoxLugar.Text.Length = 0 Then
+
+                tBoxLugar.Text = Message
+                tBoxLugar.HintForeColor = Color.Red
+                tBoxLugar.ForeColor = Color.Red
+            End If
+            If tBoxSuporte.Text.Length = 0 Then
+
+                tBoxSuporte.Text = Message
+                tBoxSuporte.HintForeColor = Color.Red
+                tBoxSuporte.ForeColor = Color.Red
+            End If
+            If tBoxTecnologia.Text.Length = 0 Then
+
+                tBoxTecnologia.Text = Message
+                tBoxTecnologia.HintForeColor = Color.Red
+                tBoxTecnologia.ForeColor = Color.Red
+            End If
+            If tBoxComprimento.Text.Length = 0 Then
+
+                tBoxComprimento.Text = Message
+                tBoxComprimento.HintForeColor = Color.Red
+                tBoxComprimento.ForeColor = Color.Red
+            End If
+            If tBoxLargura.Text.Length = 0 Then
+
+                tBoxLargura.Text = Message
+                tBoxLargura.HintForeColor = Color.Red
+                tBoxLargura.ForeColor = Color.Red
+            End If
+            If tBoxEspessura.Text.Length = 0 Then
+
+                tBoxEspessura.Text = Message
+                tBoxEspessura.HintForeColor = Color.Red
+                tBoxEspessura.ForeColor = Color.Red
+            End If
+            If tBoxLatitude.Text.Length = 0 Then
+
+                tBoxLatitude.Text = Message
+                tBoxLatitude.HintForeColor = Color.Red
+                tBoxLatitude.ForeColor = Color.Red
+            End If
+            If tBoxLongitude.Text.Length = 0 Then
+                tBoxLongitude.Text = Message
+                tBoxLongitude.HintForeColor = Color.Red
+                tBoxLongitude.ForeColor = Color.Red
+            End If
+            If tBoxLegenda.Text.Length = 0 Then
+                tBoxLegenda.Text = Message
+                tBoxLegenda.HintForeColor = Color.Red
+                tBoxLegenda.ForeColor = Color.Red
+            End If
+            If pBox.Image Is Nothing Then
+                ImgIndicator.Visible = 1
+            End If
+
+            If (tBoxCodigo.Text <> "" And tBoxConcelho.Text <> "" And tBoxFreguesia.Text <> "" And tBoxLugar.Text <> "" And tBoxSuporte.Text <> "" And tBoxTecnologia.Text <> "" And tBoxComprimento.Text <> "" And tBoxLargura.Text <> "" And tBoxEspessura.Text <> "" And tBoxLatitude.Text <> "" And tBoxLongitude.Text <> "") Then
+                If (PeriodoCombo.selectedIndex <> -1 And MateriaPrimaCombo.selectedIndex <> -1 And DescricaoCombo.selectedIndex <> -1 And pBox.Image Is Nothing = False) Then
+                    InsertItemsDatabase(pBox, tBoxCodigo, DateDate.Value.ToString("yyyy-MM-dd"), tBoxConcelho, tBoxFreguesia, tBoxLugar, PeriodoCombo, MateriaPrimaCombo, DescricaoCombo, tBoxSuporte, tBoxTecnologia, tBoxComprimento, tBoxLargura, tBoxEspessura, tBoxLatitude, tBoxLongitude, "Erro ao Inserir Dados")
+                    If ColourSelector.Location.X = ColourBlue.Location.X Then
+                        sqrColour = "cadetblue"
+                    ElseIf ColourSelector.Location.X = ColourOrange.Location.X Then
+                        sqrColour = "orange"
+                    ElseIf ColourSelector.Location.X = ColourRed.Location.X Then
+                        sqrColour = "red"
+                    ElseIf ColourSelector.Location.X = ColourPurple.Location.X Then
+                        sqrColour = "purple"
+                    ElseIf ColourSelector.Location.X = ColourPink.Location.X Then
+                        sqrColour = "pink"
+                    End If
+                    If sqrColour <> "" Then
+                        InsertMarkersDatabase(tBoxCodigo, tBoxLatitude, tBoxLongitude, sqrColour, tBoxLegenda, "Generico")
+                    End If
+                End If
+                If Form1.Options1.language = 0 Then
+                    MessageBox.Show("Peça Guardada")
+                ElseIf Form1.Options1.language = 1 Then
+                    MessageBox.Show("Item Saved")
                 End If
             End If
         End If
-
 
 
     End Sub
@@ -588,7 +590,7 @@ Public Class db_form
         If opf.ShowDialog = Windows.Forms.DialogResult.OK Then
 
             pBox.Image = Image.FromFile(opf.FileName)
-            MessageBox.Show(opf.FileName)
+            'MessageBox.Show(opf.FileName)
 
         End If
     End Sub
@@ -630,32 +632,59 @@ Public Class db_form
 
     Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
         'MessageBox.Show(DateDate.Value.ToString("yyyy-MM-dd"))
-        Dim path As String = My.Application.Info.DirectoryPath
-        Dim relpath, primeira_linha As String
-        Dim fileReader As System.IO.StreamReader
-        relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastcode.cd")
-        fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
-        primeira_linha = fileReader.ReadLine()
-        MessageBox.Show(primeira_linha)
+        'Dim path As String = My.Application.Info.DirectoryPath
+        'Dim relpath, primeira_linha As String
+        'Dim fileReader As System.IO.StreamReader
+        'relpath = path.Replace("\ArqDB-master\ArqDB\bin\Debug", "\config\lastcode.cd")
+        'fileReader = My.Computer.FileSystem.OpenTextFileReader(relpath)
+        'primeira_linha = fileReader.ReadLine()
+        'MessageBox.Show(primeira_linha)
+        'DescricaoCombo.AddItem()
+        'MateriaPrimaCombo.Items.SetValue(0)
+        'MateriaPrimaCombo.
+        'DateDate.Value = "2001-03-05"
+        tBoxCodigo.Text = ""
+        tBoxConcelho.Text = ""
+        tBoxFreguesia.Text = ""
+        tBoxLugar.Text = ""
+        MateriaPrimaCombo.selectedIndex = -1
+        PeriodoCombo.selectedIndex = -1
+        DescricaoCombo.selectedIndex = -1
+        tBoxSuporte.Text = ""
+        tBoxComprimento.Text = ""
+        tBoxTecnologia.Text = ""
+        tBoxLargura.Text = ""
+        tBoxEspessura.Text = ""
+        tBoxLatitude.Text = ""
+        tBoxLongitude.Text = ""
+        tBoxLegenda.Text = ""
+        pBox.Image = Nothing
+        ColourSelector.Visible = 0
+
     End Sub
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
-        Dim con As New MySqlConnection()
-        Dim comando As New MySqlCommand
-        Try
-            con.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
-            con.Open()
-            comando.Connection = con
-            comando.CommandText = "INSERT INTO teste(code, freguesia, Date) VALUES(" & tBoxCodigo.Text & ",'" & tBoxFreguesia.Text & "','" & DateDate.Value.ToString("yyyy-MM-dd") & "')"
-            comando.ExecuteNonQuery()
-        Catch ex As Exception
-            MessageBox.Show("Erro de teste" & ex.Message, "Error")
-        Finally
-            con.Close()
-        End Try
+        Dim connection As New MySqlConnection()
+        Dim table As New DataTable()
+        connection.ConnectionString = "SERVER=localhost; user=root; password=''; database=arq_db"
+        Dim sql As String
+        If Form1.Options1.language = 0 Then
+            sql = "SELECT Cod as 'Codigo', Date as 'Data', TownHall as 'Concelho', Parish as 'Freguesia', Place as 'Lugar', Epoch as 'Periodo', RawMaterial as 'Materia Prima', Description as 'Descricao', Base as 'Suporte', Technology as 'Tecnologia', Length as 'Comprimento', Width as 'Largura', Thickness as 'Espessura', Latitude, Longitude from items"
+        Else
+            sql = "SELECT Cod, Date, TownHall, Parish, Place, Epoch, RawMaterial, Description, Base, Technology, Length, Width, Thickness, Latitude, Longitude from items"
+        End If
+        Dim adapter As New MySqlDataAdapter(sql, connection)
+        adapter.Fill(table)
+        db_form_delete.DataItems.DataSource = table
+        db_form_delete.Show()
     End Sub
 
     Private Sub BtnLocalizarTodos_Click(sender As Object, e As EventArgs) Handles BtnLocalizarTodos.Click
         CreateMapMultipleLocations()
+    End Sub
+
+    Private Sub BtnList_Click(sender As Object, e As EventArgs) Handles BtnList.Click
+        Dim webAddress As String = "http://127.0.0.1/iot/tabela.php"
+        Process.Start(webAddress)
     End Sub
 End Class

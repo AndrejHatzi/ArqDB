@@ -48,6 +48,9 @@ Partial Class Form1
         Me.BtnAboutSmall = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.BtnHomeSmall = New Bunifu.Framework.UI.BunifuFlatButton()
         Me.SelectorPanel = New System.Windows.Forms.Panel()
+        Me.About1 = New ArqDB.about()
+        Me.Start_object_identifier1 = New ArqDB.start_object_identifier()
+        Me.Homepage1 = New ArqDB.homepage()
         Me.Mapstudio1 = New ArqDB.mapstudio()
         Me.Db_form1 = New ArqDB.db_form()
         Me.Options1 = New ArqDB.options()
@@ -416,7 +419,7 @@ Partial Class Form1
         Me.BtnBDSmall.IconRightVisible = True
         Me.BtnBDSmall.IconRightZoom = 0.0R
         Me.BtnBDSmall.IconVisible = True
-        Me.BtnBDSmall.IconZoom = 90.0R
+        Me.BtnBDSmall.IconZoom = 50.0R
         Me.BtnBDSmall.IsTab = False
         Me.BtnBDSmall.Location = New System.Drawing.Point(155, 38)
         Me.BtnBDSmall.Name = "BtnBDSmall"
@@ -450,7 +453,7 @@ Partial Class Form1
         Me.BtnDetetorSmall.IconRightVisible = True
         Me.BtnDetetorSmall.IconRightZoom = 0.0R
         Me.BtnDetetorSmall.IconVisible = True
-        Me.BtnDetetorSmall.IconZoom = 90.0R
+        Me.BtnDetetorSmall.IconZoom = 50.0R
         Me.BtnDetetorSmall.IsTab = False
         Me.BtnDetetorSmall.Location = New System.Drawing.Point(303, 38)
         Me.BtnDetetorSmall.Name = "BtnDetetorSmall"
@@ -484,7 +487,7 @@ Partial Class Form1
         Me.BtnMapStudioSmall.IconRightVisible = True
         Me.BtnMapStudioSmall.IconRightZoom = 0.0R
         Me.BtnMapStudioSmall.IconVisible = True
-        Me.BtnMapStudioSmall.IconZoom = 90.0R
+        Me.BtnMapStudioSmall.IconZoom = 50.0R
         Me.BtnMapStudioSmall.IsTab = False
         Me.BtnMapStudioSmall.Location = New System.Drawing.Point(451, 38)
         Me.BtnMapStudioSmall.Name = "BtnMapStudioSmall"
@@ -518,7 +521,7 @@ Partial Class Form1
         Me.BtnOptionsSmall.IconRightVisible = True
         Me.BtnOptionsSmall.IconRightZoom = 0.0R
         Me.BtnOptionsSmall.IconVisible = True
-        Me.BtnOptionsSmall.IconZoom = 90.0R
+        Me.BtnOptionsSmall.IconZoom = 50.0R
         Me.BtnOptionsSmall.IsTab = False
         Me.BtnOptionsSmall.Location = New System.Drawing.Point(599, 38)
         Me.BtnOptionsSmall.Name = "BtnOptionsSmall"
@@ -552,7 +555,7 @@ Partial Class Form1
         Me.BtnAboutSmall.IconRightVisible = True
         Me.BtnAboutSmall.IconRightZoom = 0.0R
         Me.BtnAboutSmall.IconVisible = True
-        Me.BtnAboutSmall.IconZoom = 90.0R
+        Me.BtnAboutSmall.IconZoom = 50.0R
         Me.BtnAboutSmall.IsTab = False
         Me.BtnAboutSmall.Location = New System.Drawing.Point(747, 38)
         Me.BtnAboutSmall.Name = "BtnAboutSmall"
@@ -586,7 +589,7 @@ Partial Class Form1
         Me.BtnHomeSmall.IconRightVisible = True
         Me.BtnHomeSmall.IconRightZoom = 0.0R
         Me.BtnHomeSmall.IconVisible = True
-        Me.BtnHomeSmall.IconZoom = 90.0R
+        Me.BtnHomeSmall.IconZoom = 50.0R
         Me.BtnHomeSmall.IsTab = False
         Me.BtnHomeSmall.Location = New System.Drawing.Point(0, 38)
         Me.BtnHomeSmall.Name = "BtnHomeSmall"
@@ -608,6 +611,30 @@ Partial Class Form1
         Me.SelectorPanel.Name = "SelectorPanel"
         Me.SelectorPanel.Size = New System.Drawing.Size(10, 59)
         Me.SelectorPanel.TabIndex = 18
+        '
+        'About1
+        '
+        Me.About1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.About1.Location = New System.Drawing.Point(0, 100)
+        Me.About1.Name = "About1"
+        Me.About1.Size = New System.Drawing.Size(895, 600)
+        Me.About1.TabIndex = 23
+        '
+        'Start_object_identifier1
+        '
+        Me.Start_object_identifier1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Start_object_identifier1.Location = New System.Drawing.Point(138, 99)
+        Me.Start_object_identifier1.Name = "Start_object_identifier1"
+        Me.Start_object_identifier1.Size = New System.Drawing.Size(895, 600)
+        Me.Start_object_identifier1.TabIndex = 22
+        '
+        'Homepage1
+        '
+        Me.Homepage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
+        Me.Homepage1.Location = New System.Drawing.Point(138, 96)
+        Me.Homepage1.Name = "Homepage1"
+        Me.Homepage1.Size = New System.Drawing.Size(895, 600)
+        Me.Homepage1.TabIndex = 21
         '
         'Mapstudio1
         '
@@ -639,6 +666,9 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(44, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(900, 700)
+        Me.Controls.Add(Me.About1)
+        Me.Controls.Add(Me.Start_object_identifier1)
+        Me.Controls.Add(Me.Homepage1)
         Me.Controls.Add(Me.Mapstudio1)
         Me.Controls.Add(Me.Db_form1)
         Me.Controls.Add(Me.SelectorPanel)
@@ -699,5 +729,8 @@ Partial Class Form1
     Friend WithEvents SelectorPanel As System.Windows.Forms.Panel
     Friend WithEvents Db_form1 As ArqDB.db_form
     Friend WithEvents Mapstudio1 As ArqDB.mapstudio
+    Friend WithEvents Homepage1 As ArqDB.homepage
+    Friend WithEvents Start_object_identifier1 As ArqDB.start_object_identifier
+    Friend WithEvents About1 As ArqDB.about
 
 End Class
